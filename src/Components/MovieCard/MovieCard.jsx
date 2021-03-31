@@ -1,15 +1,14 @@
 import React from "react";
+import "./MovieCard.css";
 
 const MovieCard = (props) => {
+  const imgURL =
+    props.data["poster_path"] === null
+      ? ""
+      : `http://image.tmdb.org/t/p/w200${props.data["poster_path"]}`;
   return (
-    <div style={{ display: "flex", width: "500px", border: "5px solid black" }}>
-      <img
-        src={`http://image.tmdb.org/t/p/w200${props.data["poster_path"]}`}
-      ></img>
-      <div style={{ paddingLeft: "50px" }}>
-        <p>{props.data.title}</p>
-        <p>{props.data.overview}</p>
-      </div>
+    <div className="movie-card">
+      <img className="movie-img" src={imgURL}></img>
     </div>
   );
 };

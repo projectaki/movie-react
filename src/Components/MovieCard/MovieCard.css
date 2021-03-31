@@ -1,0 +1,8 @@
+.movie-card {
+  padding: 4vmin 2vmin;
+}
+
+.movie-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

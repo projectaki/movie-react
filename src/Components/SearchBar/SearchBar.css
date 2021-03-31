@@ -1,0 +1,49 @@
+.search-bar {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 60vmin;
+  height: 5vh;
+  border-radius: 3px;
+  border: 1px solid black;
+  box-shadow: 0 0 2vmin 0.1vmin black;
+  background-color: lightgrey;
+  color: black;
+  text-align: center;
+  font-size: 2.5vmin;
+}
+
+.anim {
+  animation-name: goup;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes goup {
+  from {
+    top: 50%;
+  }
+  to {
+    top: calc(11vh);
+  }
+}
+
+.search-bar::placeholder {
+  color: grey;
+  font-size: 2vmin;
+}
+
+.search-bar:focus::placeholder {
+  color: transparent;
+}
+
+/*
+    Remove outline on click
+*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
