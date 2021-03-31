@@ -1,6 +1,7 @@
 import Navbar from "./Components/Navbar/Navbar";
-import { Switch, Route, Link } from "react-router-dom";
-import Home from "./Components/Pages/Home/Home";
+import { Switch, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import MovieProfile from "./Pages/MovieProfilePage/MovieProfile";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home}></Route>
+        <Route exact path="/MovieProfile" component={MovieProfile}></Route>
       </Switch>
     </>
   );

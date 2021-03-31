@@ -8,7 +8,7 @@ const Navbar = (props) => {
         <p style={{ fontSize: "4vmin", fontWeight: "bold" }}>My Cinema</p>
         <i
           style={{ paddingLeft: "2 vw", fontSize: "4vmin" }}
-          class="fas fa-film fa-2x"
+          className="fas fa-film fa-2x"
         ></i>
       </div>
     </div>
