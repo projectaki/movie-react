@@ -17,10 +17,10 @@
 .up-pos {
   top: 11vh;
 }
-/* 
+
 .anim {
   animation-name: goup;
-  animation-duration: 0.2s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
 
@@ -31,7 +31,7 @@
   to {
     top: calc(11vh);
   }
-} */
+}
 
 .search-bar::placeholder {
   color: grey;

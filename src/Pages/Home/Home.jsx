@@ -11,7 +11,20 @@ const Home = () => {
   );
 
   useEffect(() => {
+    // special action if we refresh
+    window.onbeforeunload = function () {
+      return setMovies([]);
+    };
+
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const searchBar = document.getElementById("search");
     sessionStorage.setItem("movies", JSON.stringify(movies));
+    movies.length > 0 && searchBar.classList.add("up-pos");
   }, [movies]);
 
   const getSearchResults = async () => {
@@ -34,6 +47,7 @@ const Home = () => {
         search={search}
         setSearch={setSearch}
         getResults={getSearchResults}
+        length={movies.length}
       />
       {movies.length !== 0 && <MovieCardHolder movies={movies} />}
     </>

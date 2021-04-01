@@ -9,7 +9,7 @@ const MovieCard = (props) => {
   return (
     props.data !== "404" && (
       <div className="movie-card">
-        <img src={imgURL}></img>
+        <img src={imgURL} alt={props.data.original_title}></img>
       </div>
     )
   );

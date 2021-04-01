@@ -8,9 +8,9 @@ const MovieCardHolder = (props) => {
   return (
     <div className="movie-container">
       {props.movies.map((movie) => (
-        <Link to={{ pathname: "/MovieProfile", movie }}>
+        <Link key={movie.id} to={{ pathname: "/MovieProfile", movie }}>
           <div className="movie-card-wrapper">
-            <MovieCard key={movie.id} data={movie} />
+            <MovieCard data={movie} />
           </div>
         </Link>
       ))}

@@ -2,6 +2,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import MovieProfile from "./Pages/MovieProfilePage/MovieProfile";
+import "./App.css";
 
 function App() {
   return (
