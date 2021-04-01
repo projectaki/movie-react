@@ -3,23 +3,16 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 import MovieREST from "../../MovieApi/MovieREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
-import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [search, setSearch] = useState("");
-  const [movies, setMovies] = useState([]);
-
-  const history = useHistory();
+  const [movies, setMovies] = useState(
+    JSON.parse(sessionStorage.getItem("movies")) || ""
+  );
 
   useEffect(() => {
-    const searchBar = document.getElementById("search");
-    if (movies.length > 0) {
-      searchBar.classList.add("up-pos");
-    } else searchBar.classList.remove("up-pos");
-    const historymovies =
-      history.location.state === undefined ? [] : history.location.state.movies;
-    setMovies(historymovies);
-  });
+    sessionStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
 
   const getSearchResults = async () => {
     const res = await MovieREST.searchWithQuery(search);
@@ -32,24 +25,18 @@ const Home = () => {
         movie["backdrop_path"] !== null &&
         arr.push(movie);
     }
-
-    history.push({
-      pathname: "/",
-      state: {
-        movies: arr,
-      },
-    });
+    setMovies(arr);
   };
 
   return (
-    <div>
+    <>
       <SearchBar
         search={search}
         setSearch={setSearch}
         getResults={getSearchResults}
       />
       {movies.length !== 0 && <MovieCardHolder movies={movies} />}
-    </div>
+    </>
   );
 };
 

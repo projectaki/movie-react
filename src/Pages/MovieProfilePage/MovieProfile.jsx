@@ -1,22 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import { useHistory } from "react-router-dom";
 
 const MovieProfile = (props) => {
-  const history = useHistory();
-  const data =
-    history.location.state === undefined ? "404" : history.location.state.data;
+  const [movie, setMovie] = useState("");
+  const passedMovie = useHistory().location.movie;
 
-  // const {
-  //   poster_path,
-  //   overview,
-  //   original_title,
-  //   vote_average,
-  //   release_date,
-  // } = location.data;
+  useEffect(() => {
+    passedMovie !== undefined &&
+      sessionStorage.setItem("movieprofile", JSON.stringify(passedMovie));
+    setMovie(JSON.parse(sessionStorage.getItem("movieprofile")));
+  }, [passedMovie]);
+
   return (
     <div className="profile-cont">
-      <MovieCard data={data} />
+      <MovieCard data={movie} />
       <div></div>
     </div>
   );

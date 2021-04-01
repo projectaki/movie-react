@@ -2,27 +2,17 @@ import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import Footer from "../Navbar/Footer";
 import "./MovieCardHolder.css";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MovieCardHolder = (props) => {
-  const history = useHistory();
-
   return (
     <div className="movie-container">
       {props.movies.map((movie) => (
-        <div
-          className="movie-img"
-          onClick={() =>
-            history.push({
-              pathname: "/MovieProfile",
-              state: {
-                data: movie,
-              },
-            })
-          }
-        >
-          <MovieCard key={movie.id} data={movie} />
-        </div>
+        <Link to={{ pathname: "/MovieProfile", movie }}>
+          <div className="movie-card-wrapper">
+            <MovieCard key={movie.id} data={movie} />
+          </div>
+        </Link>
       ))}
       <Footer />
     </div>
