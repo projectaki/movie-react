@@ -8,8 +8,6 @@ const SearchBar = (props) => {
         onSubmit={(e) => {
           e.preventDefault();
           props.getResults();
-          const searchBar = document.getElementById("search");
-          searchBar.classList.add("anim");
         }}
       >
         <input

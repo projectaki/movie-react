@@ -3,13 +3,22 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 import MovieREST from "../../MovieApi/MovieREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
 
+  const history = useHistory();
+
   useEffect(() => {
-    //console.log(movies);
+    const searchBar = document.getElementById("search");
+    if (movies.length > 0) {
+      searchBar.classList.add("up-pos");
+    } else searchBar.classList.remove("up-pos");
+    const historymovies =
+      history.location.state === undefined ? [] : history.location.state.movies;
+    setMovies(historymovies);
   });
 
   const getSearchResults = async () => {
@@ -23,7 +32,13 @@ const Home = () => {
         movie["backdrop_path"] !== null &&
         arr.push(movie);
     }
-    setMovies(arr);
+
+    history.push({
+      pathname: "/",
+      state: {
+        movies: arr,
+      },
+    });
   };
 
   return (
