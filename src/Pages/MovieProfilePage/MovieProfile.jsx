@@ -28,6 +28,7 @@ const MovieProfile = () => {
           <p className="movie-desc">{movie.overview}</p>
         </div>
       </div>
+
       <Similar key={movie.id} movieid={movie.id} />
     </>
   );

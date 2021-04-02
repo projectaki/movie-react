@@ -1,3 +1,13 @@
 .profile-cont {
   display: flex;
+  padding: 3vmin;
+}
+
+@media screen and (max-width: 500px) {
+  .profile-cont {
+    display: block;
+    padding: 3vmin;
+    justify-content: center;
+    align-items: center;
+  }
 }

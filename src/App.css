@@ -1,11 +1,11 @@
 .movie-desc {
-  font-size: 2vw;
+  font-size: 3vmin;
   color: white;
   text-align: justify;
-  padding: 2vmin 10vmin;
+  padding: 2vmin 5vmin;
 }
 
 .movie-title {
-  font-size: 3vw;
-  padding: 0vmin 10vmin;
+  font-size: 5vmin;
+  padding: 0vmin 5vmin;
 }

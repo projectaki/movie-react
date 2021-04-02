@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import MovieREST from "../../MovieApi/MovieREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -10,21 +12,31 @@ const Home = () => {
     JSON.parse(sessionStorage.getItem("movies")) || ""
   );
 
-  useEffect(() => {
-    // special action if we refresh
-    window.onbeforeunload = function () {
-      return setMovies([]);
-    };
-
-    return () => {
-      window.onbeforeunload = null;
-    };
-  }, []);
+  const location = useLocation();
 
   useEffect(() => {
     const searchBar = document.getElementById("search");
+
+    if (location.reset === true) {
+      setMovies([]);
+      searchBar.classList.remove("anim", "up-pos");
+      searchBar.classList.add("down-pos");
+    }
+  }, [location]);
+
+  useEffect(() => {
     sessionStorage.setItem("movies", JSON.stringify(movies));
-    movies.length > 0 && searchBar.classList.add("up-pos");
+  }, [movies]);
+
+  useEffect(() => {
+    const searchBar = document.getElementById("search");
+    if (movies.length > 0) {
+      searchBar.classList.remove("down-pos");
+      searchBar.classList.add("up-pos");
+    } else {
+      searchBar.classList.remove("anim", "up-pos");
+      searchBar.classList.add("down-pos");
+    }
   }, [movies]);
 
   const getSearchResults = async () => {

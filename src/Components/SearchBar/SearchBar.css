@@ -18,6 +18,10 @@
   top: 11vh;
 }
 
+.down-pos {
+  top: 50%;
+}
+
 .anim {
   animation-name: goup;
   animation-duration: 0.5s;

@@ -1,5 +1,7 @@
 .movie-card {
   padding: 4vmin 2vmin;
+  width: 200px;
+  margin: auto;
 }
 
 .movie-card-wrapper:hover {

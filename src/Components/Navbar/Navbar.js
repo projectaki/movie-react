@@ -1,11 +1,27 @@
 import React from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   return (
     <div className="navbar">
       <div style={{ display: "flex", alignItems: "center", gap: "1vw" }}>
-        <p style={{ fontSize: "4vmin", fontWeight: "bold" }}>My Cinema</p>
+        <Link
+          to={{ pathname: "/", reset: true }}
+          style={{ textDecoration: "none" }}
+          replace
+        >
+          <p
+            style={{
+              fontSize: "4vmin",
+              fontWeight: "bold",
+              color: "black",
+            }}
+          >
+            My Cinema
+          </p>
+        </Link>
+
         <i
           style={{ paddingLeft: "2 vw", fontSize: "4vmin" }}
           className="fas fa-film fa-2x"
