@@ -8,7 +8,10 @@ const MovieCardHolder = (props) => {
   return (
     <div className="movie-container">
       {props.movies.map((movie) => (
-        <Link key={movie.id} to={{ pathname: "/MovieProfile", movie }}>
+        <Link
+          key={movie.id}
+          to={{ pathname: `/MovieProfile/${movie.id}`, movie }}
+        >
           <div className="movie-card-wrapper">
             <MovieCard data={movie} />
           </div>
