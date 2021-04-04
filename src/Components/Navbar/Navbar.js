@@ -31,8 +31,8 @@ const Navbar = (props) => {
         </Link>
 
         <i
-          style={{ paddingLeft: "2 vw", fontSize: "4vmin" }}
-          className="fas fa-film fa-2x"
+          style={{ paddingLeft: "1vw", fontSize: "4vmin" }}
+          className="fas fa-tv fa-2x"
         ></i>
       </div>
       <div className="link-cont">
@@ -63,7 +63,11 @@ const Navbar = (props) => {
         onClick={() => toggleHandler()}
         className="fas fa-bars fa-1x mobile-icon"
       ></i>
-      <div id="mobile-menu" className="div-cont-mobile ">
+      <div
+        id="mobile-menu"
+        className="div-cont-mobile "
+        style={{ zIndex: "1" }}
+      >
         <Link
           activeStyle={{ backgroundColor: "#CAC40E", color: "black" }}
           className="nav-link"

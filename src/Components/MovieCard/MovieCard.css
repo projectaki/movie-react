@@ -1,6 +1,6 @@
 .movie-card {
   padding: 4vmin 2vmin;
-  width: 200px;
+  width: 300px;
   margin: 0;
 }
 
@@ -8,6 +8,12 @@
   transform: scale(1.1);
   cursor: pointer;
 }
+
+.movie-card-img {
+  width: 300px;
+  box-shadow: 0 0 30px 2vmin black;
+}
+
 @media screen and (max-width: 500px) {
   .movie-card {
     margin: auto;

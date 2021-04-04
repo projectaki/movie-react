@@ -1,6 +1,6 @@
 .navbar {
   height: 7vh;
-
+  font-family: monospace;
   background-color: #484848;
   top: 0;
   display: flex;
@@ -42,6 +42,11 @@
   text-decoration: none;
   color: #ca0c3d;
   font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: black;
+  opacity: 0.5;
 }
 
 .mobile-icon {

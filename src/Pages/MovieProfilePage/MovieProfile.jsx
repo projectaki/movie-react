@@ -38,10 +38,11 @@ const MovieProfile = () => {
     setMovie(
       JSON.parse(sessionStorage.getItem(`movieprofile${currentMovieId}`))
     );
-  }, [currentMovieId]);
+  }, [currentMovieId, passedMovie]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log(movie);
   }, [movie]);
 
   const getMovieDetails = async (id) => {
@@ -74,14 +75,37 @@ const MovieProfile = () => {
       <div className="profile-cont">
         <div>
           <MovieCard data={movie} />
-          <p className="movie-desc">{movie.release_date}</p>
         </div>
-
-        <div>
-          <h1 className="movie-title">{movie.original_title}</h1>
-
-          <p className="movie-desc">{movie.overview}</p>
+        <div className="text-cont">
+          <div className="title-cont">
+            <h2 className="movie-title">{movie.original_title}</h2>
+            <h2 className="movie-release">
+              {movie !== "" && movie.release_date.substring(0, 4)}
+            </h2>
+          </div>
+          <div className="desc-cont">
+            <p className="movie-desc">{movie.overview}</p>
+          </div>
         </div>
+        <div className="cast">
+          <div style={{ fontWeight: "bold" }}>Cast: </div>
+          {movie !== "" &&
+            movie.credits !== undefined &&
+            movie.credits.cast.map((record) => {
+              return (
+                <div className="cast-record">
+                  {record.name} : {record.character}
+                </div>
+              );
+            })}
+        </div>
+        <p className="rating">
+          <i
+            style={{ paddingRight: "1vw", fontSize: "9vmin", color: "#986B05" }}
+            className="fas fa-star fa-1x"
+          ></i>
+          {movie.vote_average}
+        </p>
       </div>
       <h2 style={{ textAlign: "center" }}>Reccomended Movies</h2>
       {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
