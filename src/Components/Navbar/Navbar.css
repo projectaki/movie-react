@@ -18,6 +18,10 @@
   bottom: 0;
 }
 
+.div-cont-mobile {
+  display: none;
+}
+
 .link-cont {
   position: absolute;
   right: 2%;
@@ -31,10 +35,38 @@
   height: 7vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .nav-link {
   text-decoration: none;
   color: #ca0c3d;
   font-weight: bold;
+}
+
+.mobile-icon {
+  display: none !important;
+}
+
+@media screen and (max-width: 800px) {
+  .link-cont {
+    display: none;
+  }
+
+  .div-cont-mobile {
+    position: absolute;
+    right: 0;
+    background-color: #484848;
+    top: 7vh;
+    width: 40vw;
+  }
+  .mobile-icon {
+    display: block !important;
+    position: absolute;
+    right: 5%;
+  }
+
+  .toggle {
+    display: block !important;
+  }
 }
