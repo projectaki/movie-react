@@ -1,8 +1,9 @@
 .movie-container {
   padding-top: 3vw;
-  margin-top: 8vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   background-color: black;
+  border-bottom: 0.1vmin solid white;
+  border-top: 0.1vmin solid white;
 }

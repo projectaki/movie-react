@@ -3,7 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import MovieProfile from "./Pages/MovieProfilePage/MovieProfile";
 import "./App.css";
-import Similar from "./Components/SimilarMovies/Similar";
+import Popular from "./Pages/PopularPage/Popular";
+import NowPlaying from "./Pages/NowPlaying/NowPlaying";
+import Upcoming from "./Pages/Upcoming/Upcoming";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/MovieProfile/:id" component={MovieProfile}></Route>
-        <Route exact path="/SimilarMovies" component={Similar}></Route>
+        <Route exact path="/Popular" component={Popular}></Route>
+        <Route exact path="/NowPlaying" component={NowPlaying}></Route>
+        <Route exact path="/Upcoming" component={Upcoming}></Route>
       </Switch>
     </>
   );

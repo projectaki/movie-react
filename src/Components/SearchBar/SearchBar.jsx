@@ -18,7 +18,7 @@ const SearchBar = (props) => {
           type="search"
           placeholder="Search for movies..."
           required
-          autoComplete="off"
+          autoComplete="on"
           onChange={(e) => props.setSearch(e.target.value)}
           onFocus={(e) => (e.target.value = "")}
         />

@@ -1,6 +1,6 @@
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
-import Footer from "../Navbar/Footer";
+
 import "./MovieCardHolder.css";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,6 @@ const MovieCardHolder = (props) => {
           </div>
         </Link>
       ))}
-      <Footer />
     </div>
   );
 };

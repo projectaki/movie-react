@@ -1,10 +1,19 @@
 .movie-card {
   padding: 4vmin 2vmin;
   width: 200px;
-  margin: auto;
+  margin: 0;
 }
 
 .movie-card-wrapper:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+  .movie-card {
+    margin: auto;
+    width: 100px;
+  }
+  .movie-card-img {
+    width: 100px;
+  }
 }

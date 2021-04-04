@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MovieCardHolder from "../MovieCardHolder/MovieCardHolder";
 import Flask from "../../FlaskApi/FlaskREST";
 import MovieREST from "../../MovieApi/MovieREST";
+import Footer from "../Navbar/Footer";
 
 const Similar = (props) => {
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -38,7 +39,9 @@ const Similar = (props) => {
 
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>Similar movies</h2>
+      <h2 style={{ textAlign: "center" }}>
+        Similar movies based on movie description text similarity
+      </h2>
       {similarMovies.length > 0 && <MovieCardHolder movies={similarMovies} />}
       {isLoading && (
         <p key={props.movieid} style={{ color: "white", textAlign: "center" }}>
@@ -55,6 +58,7 @@ const Similar = (props) => {
           {`${error}...`}
         </p>
       )}
+      <Footer />
     </>
   );
 };
