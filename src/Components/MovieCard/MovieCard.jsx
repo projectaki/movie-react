@@ -12,7 +12,7 @@ const MovieCard = (props) => {
         <img
           className="movie-card-img"
           src={imgURL}
-          alt={props.data.original_title}
+          alt={props.data.original_title || props.data.original_name}
         ></img>
       </div>
     )

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./MovieProfile.css";
 import Similar from "../../Components/SimilarMovies/Similar";
 import MovieREST from "../../MovieApi/MovieREST";
+import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -12,8 +13,15 @@ const MovieProfile = () => {
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
   const [movie, setMovie] = useState("");
+  const [ADAPTER, setADAPTER] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
+  );
   let castIndex = 0;
 
+  // useEffect(() => {
+  //   sessionStorage.clear();
+  //   setMovies("");
+  // }, [ADAPTER]);
   // workaround for persisting state without browserrouter
   useEffect(() => {
     let isSub = true;
@@ -59,25 +67,22 @@ const MovieProfile = () => {
 
   const getMovieDetails = async (id) => {
     let details = {
-      release: null,
       credits: null,
       rec: null,
-      review: null,
+
       similar: null,
     };
 
-    const release = await MovieREST.getReleaseDate(id);
-    const credits = await MovieREST.getCredits(id);
-    const rec = await MovieREST.getReccomendation(id);
-    const review = await MovieREST.getReviews(id);
-    const similar = await MovieREST.getSimilar(id);
-    const res = await Promise.all([release, credits, rec, review, similar]);
+    const credits = await ADAPTER.getCredits(id);
+    const rec = await ADAPTER.getReccomendation(id);
 
-    details.release = res[0].data;
-    details.credits = res[1].data;
-    details.rec = res[2].data.results.filter((x) => x.poster_path !== null);
-    details.review = res[3].data;
-    details.similar = res[4].data.results.filter((x) => x.poster_path !== null);
+    const similar = await ADAPTER.getSimilar(id);
+    const res = await Promise.all([credits, rec, similar]);
+
+    details.credits = res[0].data;
+    details.rec = res[1].data.results.filter((x) => x.poster_path !== null);
+
+    details.similar = res[2].data.results.filter((x) => x.poster_path !== null);
 
     return details;
   };
@@ -91,9 +96,15 @@ const MovieProfile = () => {
         </div>
         <div className="text-cont">
           <div className="title-cont">
-            <h2 className="movie-title">{movie.original_title}</h2>
+            <h2 className="movie-title">
+              {movie.original_title || movie.original_name}
+            </h2>
             <h2 className="movie-release">
-              {movie !== "" && movie.release_date.substring(0, 4)}
+              {movie !== "" &&
+                ((movie.release_date !== undefined &&
+                  movie.release_date.substring(0, 4)) ||
+                  (movie.first_air_date !== undefined &&
+                    movie.first_air_date.substring(0, 4)))}
             </h2>
           </div>
           <div className="desc-cont">

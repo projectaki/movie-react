@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import MovieREST from "../../MovieApi/MovieREST";
+import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
 import { useLocation } from "react-router-dom";
@@ -12,8 +13,16 @@ const Home = () => {
   const [movies, setMovies] = useState(
     JSON.parse(sessionStorage.getItem("movies")) || ""
   );
+  const [ADAPTER, setADAPTER] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
+  );
 
   const location = useLocation();
+
+  useEffect(() => {
+    sessionStorage.removeItem("movies");
+    setMovies("");
+  }, [ADAPTER]);
 
   useEffect(() => {
     const searchBar = document.getElementById("search");
@@ -41,7 +50,7 @@ const Home = () => {
   }, [movies]);
 
   const getSearchResults = async () => {
-    const res = await MovieREST.searchWithQuery(search);
+    const res = await ADAPTER.searchWithQuery(search);
     const arr = [];
     for (let movie of res.data.results) {
       movie["poster_path"] !== null &&

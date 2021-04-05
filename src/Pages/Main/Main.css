@@ -3,3 +3,36 @@
   margin: 0;
   background-color: #282828;
 }
+
+.hide-nav {
+  display: none !important;
+}
+
+.select-cont {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 5vmin;
+}
+
+.select {
+  width: 60vmin;
+  height: 35vmin;
+  border: 1px solid black;
+  box-shadow: 0 0 20px 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8vmin;
+  font-family: monospace;
+  background-color: #696764;
+  border-radius: 10px;
+}
+
+.select:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #696764;
+}

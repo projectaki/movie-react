@@ -13,7 +13,7 @@ const Navbar = (props) => {
     }
   };
   return (
-    <div className="navbar">
+    <div id="n" className="navbar">
       <div style={{ display: "flex", alignItems: "center", gap: "1vw" }}>
         <Link
           to={{ pathname: "/", reset: true }}

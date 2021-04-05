@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import MovieREST from "../../MovieApi/MovieREST";
+import TvREST from "../../MovieApi/TvREST";
 import Footer from "../../Components/Navbar/Footer";
 import "./Popular.css";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -14,6 +15,18 @@ const Popular = () => {
   const [pages, setPages] = useState(
     JSON.parse(sessionStorage.getItem(`${history.location.path}pages`)) || 1
   );
+
+  const [ADAPTER, setADAPTER] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
+  );
+
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    sessionStorage.removeItem(`scroll${history.location.pathname}`);
+    setMovies([]);
+  }, [ADAPTER]);
+
   useEffect(() => {
     const scrollMethod = async () => {
       const setPos = await parseInt(
@@ -39,9 +52,10 @@ const Popular = () => {
 
     const arr = await Promise.all(
       createArray(page).map(async (x) => {
-        return await MovieREST.getPopular(x);
+        return await ADAPTER.getPopular(x);
       })
     );
+    console.log(arr);
     setMovies(arr);
     sessionStorage.setItem(`${history.location.path}`, JSON.stringify(movies));
     sessionStorage.setItem(`${history.location.path}pages`, pages);
