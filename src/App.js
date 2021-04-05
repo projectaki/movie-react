@@ -6,11 +6,13 @@ import "./App.css";
 import Popular from "./Pages/PopularPage/Popular";
 import NowPlaying from "./Pages/NowPlaying/NowPlaying";
 import Upcoming from "./Pages/Upcoming/Upcoming";
+import TopButton from "./Components/TopButton/TopButton";
 
 function App() {
   return (
     <>
       <Navbar />
+      <TopButton />
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/MovieProfile/:id" component={MovieProfile}></Route>

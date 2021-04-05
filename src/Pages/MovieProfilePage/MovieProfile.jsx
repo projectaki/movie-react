@@ -10,7 +10,7 @@ const MovieProfile = () => {
   const [movie, setMovie] = useState("");
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
-
+  let castIndex = 0;
   // workaround for persisting state without browserrouter
   useEffect(() => {
     // only the first time the page loads
@@ -42,7 +42,6 @@ const MovieProfile = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(movie);
   }, [movie]);
 
   const getMovieDetails = async (id) => {
@@ -93,7 +92,7 @@ const MovieProfile = () => {
             movie.credits !== undefined &&
             movie.credits.cast.map((record) => {
               return (
-                <div className="cast-record">
+                <div key={castIndex++} className="cast-record">
                   {record.name} : {record.character}
                 </div>
               );

@@ -3,7 +3,8 @@ import "./Navbar.css";
 import { NavLink as Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  const toggleHandler = () => {
+  const toggleHandler = (e) => {
+    e.stopPropagation();
     const elem = document.getElementById("mobile-menu");
     if (elem.classList.contains("toggle")) {
       elem.classList.remove("toggle");
@@ -60,7 +61,7 @@ const Navbar = (props) => {
         </Link>
       </div>
       <i
-        onClick={() => toggleHandler()}
+        onClick={(e) => toggleHandler(e)}
         className="fas fa-bars fa-1x mobile-icon"
       ></i>
       <div

@@ -1,0 +1,29 @@
+.top-button {
+  position: absolute;
+  display: none;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+  z-index: 1;
+  color: pink;
+  position: fixed;
+  text-shadow: 0 0 20px black;
+  animation: float 6s ease-in-out infinite;
+}
+
+.top-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, 0px);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+  100% {
+    transform: translate(-50%, 0px);
+  }
+}
