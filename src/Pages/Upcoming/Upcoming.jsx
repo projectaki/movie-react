@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
+import Navbar from "../../Components/Navbar/Navbar";
 import MovieREST from "../../MovieApi/MovieREST";
 
 const Upcoming = () => {
@@ -12,7 +13,7 @@ const Upcoming = () => {
     );
     document.body.scrollTop = setPos;
     document.documentElement.scrollTop = setPos;
-  }, [document.body.scrollTop, document.documentElement.scrollTop]);
+  }, [history.location.pathname]);
   const getUpcoming = async () => {
     const arr = await MovieREST.getUpcoming();
     const filtered = arr.data.results.filter(
@@ -22,7 +23,12 @@ const Upcoming = () => {
   };
   useEffect(() => getUpcoming(), []);
 
-  return movies.length !== 0 && <MovieCardHolder movies={movies} />;
+  return (
+    <>
+      {/* <Navbar /> */}
+      {movies.length !== 0 && <MovieCardHolder movies={movies} />}
+    </>
+  );
 };
 
 export default Upcoming;

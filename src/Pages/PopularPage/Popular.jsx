@@ -4,31 +4,29 @@ import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import MovieREST from "../../MovieApi/MovieREST";
 import Footer from "../../Components/Navbar/Footer";
 import "./Popular.css";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const Popular = () => {
   const history = useHistory();
-  const [movies, setMovies] =
-    useState(JSON.parse(sessionStorage.getItem(`${history.location.path}`))) ||
-    [];
-  const [pages, setPages] =
-    useState(
-      JSON.parse(sessionStorage.getItem(`${history.location.path}pages`))
-    ) || 1;
-
+  const [movies, setMovies] = useState(
+    JSON.parse(sessionStorage.getItem(`${history.location.path}`)) || []
+  );
+  const [pages, setPages] = useState(
+    JSON.parse(sessionStorage.getItem(`${history.location.path}pages`)) || 1
+  );
   useEffect(() => {
-    getPopularMovies(1);
-  }, []);
+    const scrollMethod = async () => {
+      const setPos = await parseInt(
+        sessionStorage.getItem(`scroll${history.location.pathname}`)
+      );
+      document.body.scrollTop = setPos;
+      document.documentElement.scrollTop = setPos;
+    };
+    scrollMethod();
+  }, [document.body.scrollTop, document.documentElement.scrollTop]);
   useEffect(() => {
     getPopularMovies(pages);
   }, [pages]);
-
-  useEffect(() => {
-    const setPos = parseInt(
-      sessionStorage.getItem(`scroll${history.location.pathname}`)
-    );
-    document.body.scrollTop = setPos;
-    document.documentElement.scrollTop = setPos;
-  }, [document.body.scrollTop, document.documentElement.scrollTop]);
 
   const getPopularMovies = async (page) => {
     const createArray = (page) => {
@@ -57,6 +55,7 @@ const Popular = () => {
   };
   return (
     <>
+      {/* <Navbar /> */}
       {movies !== null &&
         movies.map((page) => {
           return (

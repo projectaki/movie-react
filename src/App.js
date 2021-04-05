@@ -8,6 +8,7 @@ import NowPlaying from "./Pages/NowPlaying/NowPlaying";
 import Upcoming from "./Pages/Upcoming/Upcoming";
 import TopButton from "./Components/TopButton/TopButton";
 import Location from "./Components/Location/Location";
+import Main from "./Pages/Main/Main";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Navbar />
       <TopButton />
       <Switch>
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/" component={Main}></Route>
+        <Route exact path="/Home" component={Home}></Route>
         <Route exact path="/MovieProfile/:id" component={MovieProfile}></Route>
         <Route exact path="/Popular" component={Popular}></Route>
         <Route exact path="/NowPlaying" component={NowPlaying}></Route>

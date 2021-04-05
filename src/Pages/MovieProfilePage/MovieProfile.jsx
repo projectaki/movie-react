@@ -5,39 +5,52 @@ import "./MovieProfile.css";
 import Similar from "../../Components/SimilarMovies/Similar";
 import MovieREST from "../../MovieApi/MovieREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
+import Footer from "../../Components/Navbar/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const MovieProfile = () => {
-  const [movie, setMovie] = useState("");
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
+  const [movie, setMovie] = useState("");
   let castIndex = 0;
+
   // workaround for persisting state without browserrouter
   useEffect(() => {
-    // only the first time the page loads
+    let isSub = true;
     if (passedMovie !== undefined) {
-      //set values quickly to load info quick
+      setMovie(passedMovie);
       sessionStorage.setItem(
         `movieprofile${currentMovieId}`,
         JSON.stringify(passedMovie)
       );
-      getMovieDetails(passedMovie.id).then((data) => {
-        const newobj = Object.assign({}, data, passedMovie);
+    }
+    const newmov = JSON.parse(
+      sessionStorage.getItem(`movieprofile${currentMovieId}`)
+    );
+    if (newmov.rec === undefined) {
+      getMovieDetails(newmov.id).then((data) => {
+        const newobj = Object.assign({}, data, newmov);
         const run = async () => {
           await sessionStorage.setItem(
             `movieprofile${currentMovieId}`,
             JSON.stringify(newobj)
           );
-          setMovie(
-            JSON.parse(sessionStorage.getItem(`movieprofile${currentMovieId}`))
+
+          const cr = JSON.parse(
+            sessionStorage.getItem(`movieprofile${currentMovieId}`)
           );
+
+          if (isSub) setMovie(cr);
         };
         run();
       });
     }
-    //
+
     setMovie(
       JSON.parse(sessionStorage.getItem(`movieprofile${currentMovieId}`))
     );
+
+    return () => (isSub = false);
   }, [currentMovieId, passedMovie]);
 
   useEffect(() => {
@@ -71,6 +84,7 @@ const MovieProfile = () => {
 
   return (
     <>
+      {/* <Navbar /> */}
       <div className="profile-cont">
         <div>
           <MovieCard data={movie} />
@@ -114,8 +128,8 @@ const MovieProfile = () => {
       {movie.similar !== undefined && (
         <MovieCardHolder movies={movie.similar} />
       )}
-
-      <Similar key={movie.id} movieid={movie.id} />
+      <Footer />
+      {/* <Similar key={movie.id} movieid={movie.id} /> */}
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router";
 import "./TopButton.css";
 const TopButton = () => {
+  const history = useHistory();
   useEffect(() => {
     window.onscroll = function () {
       scrollHandler();
@@ -28,6 +30,7 @@ const TopButton = () => {
   const clickHandler = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+    sessionStorage.setItem(`scroll${history.location.pathname}`, 0);
   };
   return (
     <i

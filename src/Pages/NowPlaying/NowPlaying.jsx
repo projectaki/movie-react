@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
+import Navbar from "../../Components/Navbar/Navbar";
 import MovieREST from "../../MovieApi/MovieREST";
 
 const NowPlaying = () => {
@@ -11,7 +12,7 @@ const NowPlaying = () => {
     );
     document.body.scrollTop = setPos;
     document.documentElement.scrollTop = setPos;
-  }, [document.body.scrollTop, document.documentElement.scrollTop]);
+  }, [history.location.pathname]);
   const [movies, setMovies] = useState([]);
 
   const getNowPlaying = async () => {
@@ -23,7 +24,12 @@ const NowPlaying = () => {
   };
   useEffect(() => getNowPlaying(), []);
 
-  return movies.length !== 0 && <MovieCardHolder movies={movies} />;
+  return (
+    <>
+      {/* <Navbar /> */}
+      {movies.length !== 0 && <MovieCardHolder movies={movies} />};
+    </>
+  );
 };
 
 export default NowPlaying;

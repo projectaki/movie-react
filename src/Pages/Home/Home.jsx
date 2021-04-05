@@ -5,6 +5,7 @@ import MovieREST from "../../MovieApi/MovieREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
 import { useLocation } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -55,6 +56,7 @@ const Home = () => {
 
   return (
     <>
+      {/* <Navbar /> */}
       <SearchBar
         search={search}
         setSearch={setSearch}
