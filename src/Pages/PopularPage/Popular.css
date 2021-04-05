@@ -1,0 +1,22 @@
+.load-more-btn {
+  width: 20vmin;
+  height: 4vmin;
+  background: pink;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5vmin;
+}
+
+.load-more-btn:hover {
+  cursor: pointer;
+  background-color: grey;
+}
+
+.load-cont {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

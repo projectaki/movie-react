@@ -2,9 +2,16 @@ import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
 import "./MovieCardHolder.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const MovieCardHolder = (props) => {
+  const history = useHistory();
+
+  const scrollHandler = () => {
+    const path = history.location.pathname;
+    const pos = document.body.scrollTop || document.documentElement.scrollTop;
+    sessionStorage.setItem(`scroll${path}`, pos);
+  };
   return (
     <div className="movie-container">
       {props.movies.map((movie) => (
@@ -12,7 +19,7 @@ const MovieCardHolder = (props) => {
           key={movie.id}
           to={{ pathname: `/MovieProfile/${movie.id}`, movie }}
         >
-          <div className="movie-card-wrapper">
+          <div onClick={() => scrollHandler()} className="movie-card-wrapper">
             <MovieCard data={movie} />
           </div>
         </Link>
