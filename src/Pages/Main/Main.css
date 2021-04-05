@@ -18,14 +18,14 @@
 }
 
 .select {
-  width: 60vmin;
+  width: 30vw;
   height: 35vmin;
   border: 1px solid black;
   box-shadow: 0 0 20px 1px black;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 8vmin;
+  font-size: 4vw;
   font-family: monospace;
   background-color: #696764;
   border-radius: 10px;
