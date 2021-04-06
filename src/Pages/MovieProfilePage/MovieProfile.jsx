@@ -9,6 +9,9 @@ import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
 
 const MovieProfile = ({ isMovie }) => {
+  const [isMovieState] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? true : false
+  );
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
   const [movie, setMovie] = useState("");
@@ -83,8 +86,8 @@ const MovieProfile = ({ isMovie }) => {
   }, [currentMovieId, passedMovie, getMovieDetails]);
 
   useEffect(() => {
-    //window.scrollTo(0, 0);
-  }, [movie]);
+    console.log(isMovieState);
+  }, []);
 
   return (
     <>
@@ -145,12 +148,12 @@ const MovieProfile = ({ isMovie }) => {
         </p>
       </div>
       <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
-        {`Reccomended ${isMovie ? "movies" : "tv shows"}`}
+        {`Reccomended ${isMovieState ? "movies" : "tv shows"}`}
       </h2>
       {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
       <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
         {`Similar ${
-          isMovie ? "movies" : "tv shows"
+          isMovieState ? "movies" : "tv shows"
         } based on keywords and genres`}
       </h2>
       {movie.similar !== undefined && (

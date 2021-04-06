@@ -7,7 +7,10 @@ import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
 import { useLocation } from "react-router-dom";
 
-const Home = ({ setNav, isMovie }) => {
+const Home = ({ setNav }) => {
+  const [isMovie] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? true : false
+  );
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState(
     JSON.parse(sessionStorage.getItem("movies")) || ""

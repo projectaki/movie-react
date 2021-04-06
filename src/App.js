@@ -12,7 +12,9 @@ import Main from "./Pages/Main/Main";
 import { useState } from "react";
 
 function App() {
-  const [isMovie, setIsMovie] = useState(true);
+  const [isMovie, setIsMovie] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? true : false
+  );
   const setTag = () => {
     setIsMovie(sessionStorage.getItem("SELECTOR") === "movie" ? true : false);
   };
@@ -26,14 +28,12 @@ function App() {
         <Route
           exact
           path="/Home"
-          render={(props) => (
-            <Home {...props} setNav={setTag} isMovie={isMovie} />
-          )}
+          render={(props) => <Home {...props} setNav={setTag} />}
         ></Route>
         <Route
           exact
           path="/MovieProfile/:id"
-          render={(props) => <MovieProfile {...props} isMovie={isMovie} />}
+          render={(props) => <MovieProfile {...props} />}
         ></Route>
         <Route exact path="/Popular" component={Popular}></Route>
         <Route exact path="/NowPlaying" component={NowPlaying}></Route>

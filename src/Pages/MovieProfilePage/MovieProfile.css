@@ -1,7 +1,7 @@
 .profile-cont {
   display: flex;
   padding: 3vmin;
-  height: 93vh;
+  min-height: 93vh;
 }
 
 .rating {
@@ -109,7 +109,19 @@
 
   .cast {
     margin-top: 0;
-    width: 27vw;
+    width: 60vw;
     margin: auto;
+    height: 25vh;
+  }
+
+  .cast-record {
+    width: 60vw;
+  }
+  .cell {
+    width: 28vw;
+  }
+
+  .cell2 {
+    width: 28vw;
   }
 }
