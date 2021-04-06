@@ -5,6 +5,7 @@ const Main = () => {
   useEffect(() => {
     const elem = document.getElementById("n");
     elem.classList.add("hide-nav");
+
     return () => elem.classList.remove("hide-nav");
   }, []);
 

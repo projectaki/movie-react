@@ -14,25 +14,38 @@
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  gap: 5vmin;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 760px;
 }
 
 .select {
-  width: 30vw;
+  width: 340px;
   height: 35vmin;
   border: 1px solid black;
   box-shadow: 0 0 20px 1px black;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4vw;
+  font-size: 6vmin;
   font-family: monospace;
   background-color: #696764;
   border-radius: 10px;
+  margin: 2vmin;
 }
 
 .select:hover {
   cursor: pointer;
   background-color: black;
   color: #696764;
+}
+
+@media screen and (max-width: 760px) {
+  .select {
+    width: 220px;
+  }
+
+  .select-cont {
+    width: 240px;
+  }
 }

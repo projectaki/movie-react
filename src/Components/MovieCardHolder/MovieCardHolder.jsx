@@ -11,6 +11,7 @@ const MovieCardHolder = (props) => {
     const path = history.location.pathname;
     const pos = document.body.scrollTop || document.documentElement.scrollTop;
     sessionStorage.setItem(`scroll${path}`, pos);
+    window.scrollTo(0, 0);
   };
   return (
     <div className="movie-container">

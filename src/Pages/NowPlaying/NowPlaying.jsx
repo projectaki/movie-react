@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
-import Navbar from "../../Components/Navbar/Navbar";
 import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
 
 const NowPlaying = () => {
-  const [ADAPTER, setADAPTER] = useState(
+  const [ADAPTER] = useState(
     sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
   );
   const history = useHistory();
 
   useEffect(() => {
-    sessionStorage.removeItem(`scroll${history.location.pathname}`);
     setMovies([]);
   }, [ADAPTER]);
 
@@ -20,19 +18,18 @@ const NowPlaying = () => {
     const setPos = parseInt(
       sessionStorage.getItem(`scroll${history.location.pathname}`)
     );
-    document.body.scrollTop = setPos;
-    document.documentElement.scrollTop = setPos;
+    window.scrollTo(0, setPos);
   }, [history.location.pathname]);
   const [movies, setMovies] = useState([]);
 
-  const getNowPlaying = async () => {
+  const getNowPlaying = useCallback(async () => {
     const arr = await ADAPTER.getNowPlaying();
     const filtered = arr.data.results.filter(
       (x) => x.original_language === "en"
     );
     setMovies(filtered);
-  };
-  useEffect(() => getNowPlaying(), []);
+  }, [ADAPTER]);
+  useEffect(() => getNowPlaying(), [getNowPlaying]);
 
   return (
     <>

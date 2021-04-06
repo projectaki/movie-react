@@ -12,6 +12,7 @@ const Navbar = (props) => {
       elem.classList.add("toggle");
     }
   };
+
   return (
     <div id="n" className="navbar">
       <div style={{ display: "flex", alignItems: "center", gap: "1vw" }}>
@@ -27,7 +28,8 @@ const Navbar = (props) => {
               color: "black",
             }}
           >
-            My Cinema
+            {props.isMovie && "MOVIES"}
+            {!props.isMovie && "TV SHOWS"}
           </p>
         </Link>
 
@@ -49,7 +51,10 @@ const Navbar = (props) => {
           activeStyle={{ backgroundColor: "#CAC40E", color: "black" }}
           className="nav-link"
         >
-          <div className="nav-list-element">In-Cinemas</div>
+          <div className="nav-list-element">
+            {props.isMovie && "In Cinemas"}
+            {!props.isMovie && "Now Airing"}
+          </div>
         </Link>
 
         <Link
@@ -81,7 +86,10 @@ const Navbar = (props) => {
           activeStyle={{ backgroundColor: "#CAC40E", color: "black" }}
           className="nav-link"
         >
-          <div className="nav-list-element">In-Cinemas</div>
+          <div className="nav-list-element">
+            {props.isMovie && "In Cinemas"}
+            {!props.isMovie && "Now Airing"}
+          </div>
         </Link>
 
         <Link

@@ -6,18 +6,21 @@ import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
 import { useLocation } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
 
-const Home = () => {
+const Home = ({ setNav }) => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState(
     JSON.parse(sessionStorage.getItem("movies")) || ""
   );
-  const [ADAPTER, setADAPTER] = useState(
+  const [ADAPTER] = useState(
     sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
   );
 
   const location = useLocation();
+
+  useEffect(() => {
+    setNav();
+  }, [setNav]);
 
   useEffect(() => {
     sessionStorage.removeItem("movies");

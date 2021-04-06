@@ -1,27 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import { useHistory } from "react-router-dom";
 import "./MovieProfile.css";
-import Similar from "../../Components/SimilarMovies/Similar";
+// import Similar from "../../Components/SimilarMovies/Similar";
 import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
 
 const MovieProfile = () => {
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
   const [movie, setMovie] = useState("");
-  const [ADAPTER, setADAPTER] = useState(
+  const [ADAPTER] = useState(
     sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
   );
   let castIndex = 0;
 
-  // useEffect(() => {
-  //   sessionStorage.clear();
-  //   setMovies("");
-  // }, [ADAPTER]);
+  const getMovieDetails = useCallback(
+    async (id) => {
+      let details = {
+        credits: null,
+        rec: null,
+
+        similar: null,
+      };
+
+      const credits = await ADAPTER.getCredits(id);
+      const rec = await ADAPTER.getReccomendation(id);
+
+      const similar = await ADAPTER.getSimilar(id);
+      const res = await Promise.all([credits, rec, similar]);
+
+      details.credits = res[0].data;
+      details.rec = res[1].data.results.filter((x) => x.poster_path !== null);
+
+      details.similar = res[2].data.results.filter(
+        (x) => x.poster_path !== null
+      );
+
+      return details;
+    },
+    [ADAPTER]
+  );
   // workaround for persisting state without browserrouter
   useEffect(() => {
     let isSub = true;
@@ -59,33 +80,11 @@ const MovieProfile = () => {
     );
 
     return () => (isSub = false);
-  }, [currentMovieId, passedMovie]);
+  }, [currentMovieId, passedMovie, getMovieDetails]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
   }, [movie]);
-
-  const getMovieDetails = async (id) => {
-    let details = {
-      credits: null,
-      rec: null,
-
-      similar: null,
-    };
-
-    const credits = await ADAPTER.getCredits(id);
-    const rec = await ADAPTER.getReccomendation(id);
-
-    const similar = await ADAPTER.getSimilar(id);
-    const res = await Promise.all([credits, rec, similar]);
-
-    details.credits = res[0].data;
-    details.rec = res[1].data.results.filter((x) => x.poster_path !== null);
-
-    details.similar = res[2].data.results.filter((x) => x.poster_path !== null);
-
-    return details;
-  };
 
   return (
     <>

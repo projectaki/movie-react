@@ -28,9 +28,10 @@ class TvREST {
     );
   }
 
-  getPopular(page) {
+  getPopular(page, cancelToken) {
     return http.get(
-      `https://api.themoviedb.org/3/tv/popular${this.apiKey}&language=en-US&page=${page}`
+      `https://api.themoviedb.org/3/tv/popular${this.apiKey}&language=en-US&page=${page}`,
+      { cancelToken: cancelToken }
     );
   }
 
