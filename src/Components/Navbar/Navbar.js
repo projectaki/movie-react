@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Navbar.css";
 import { NavLink as Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  useEffect(() => {
-    console.log(props);
-  });
-
   const toggleHandler = (e) => {
     e.stopPropagation();
     const elem = document.getElementById("mobile-menu");

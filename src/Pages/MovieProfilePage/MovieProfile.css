@@ -38,7 +38,7 @@
 }
 
 .text-cont {
-  padding: 3vh 3vw;
+  margin-left: 2vw;
 }
 
 .title-cont {
@@ -51,34 +51,30 @@
 }
 
 .cast {
-  margin-top: 21vh;
-  margin-left: 3vw;
+  margin-top: 10vh;
+  margin-left: 1vw;
   height: 40vh;
   width: 30vw;
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 0.1vw solid black;
 }
 
 .cast-record {
   font-size: 2vmin;
-
-  width: 28vw;
+  margin-bottom: 0.8vh;
+  width: 30vw;
   display: flex;
 }
 
 .cell {
-  width: 11vw;
-  border: 0.1vw solid black;
-  padding: 1vmin;
+  width: 15vw;
+
   color: #ea10ae;
 }
 
 .cell2 {
   color: #19b530;
-  width: 11vw;
-  border: 0.1vw solid black;
-  padding: 1vmin;
+  width: 15vw;
 }
 
 @media screen and (max-width: 800px) {
@@ -108,7 +104,7 @@
   }
 
   .cast {
-    margin-top: 0;
+    margin-top: 5vh !important;
     width: 60vw;
     margin: auto;
     height: 25vh;

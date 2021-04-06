@@ -64,6 +64,12 @@ class MovieREST {
       `https://api.themoviedb.org/3/movie/${id}/credits${this.apiKey}&language=en-US`
     );
   }
+
+  getProviders(id) {
+    return http.get(
+      `https://api.themoviedb.org/3/movie/${id}/watch/providers${this.apiKey}`
+    );
+  }
 }
 
 export default new MovieREST();

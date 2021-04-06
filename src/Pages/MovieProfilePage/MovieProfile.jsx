@@ -20,27 +20,32 @@ const MovieProfile = ({ isMovie }) => {
   );
   let castIndex = 0;
 
+  useEffect(() => {
+    console.log(movie.providers);
+  }, [movie]);
+
   const getMovieDetails = useCallback(
     async (id) => {
       let details = {
         credits: null,
         rec: null,
-
         similar: null,
+        providers: null,
       };
 
       const credits = await ADAPTER.getCredits(id);
       const rec = await ADAPTER.getReccomendation(id);
-
       const similar = await ADAPTER.getSimilar(id);
-      const res = await Promise.all([credits, rec, similar]);
+      const providers = await ADAPTER.getProviders(id);
+
+      const res = await Promise.all([credits, rec, similar, providers]);
 
       details.credits = res[0].data;
       details.rec = res[1].data.results.filter((x) => x.poster_path !== null);
-
       details.similar = res[2].data.results.filter(
         (x) => x.poster_path !== null
       );
+      details.providers = res[3].data;
 
       return details;
     },
@@ -85,10 +90,6 @@ const MovieProfile = ({ isMovie }) => {
     return () => (isSub = false);
   }, [currentMovieId, passedMovie, getMovieDetails]);
 
-  useEffect(() => {
-    console.log(isMovieState);
-  }, []);
-
   return (
     <>
       {/* <Navbar /> */}
@@ -119,19 +120,20 @@ const MovieProfile = ({ isMovie }) => {
           <div className="desc-cont">
             <p className="movie-desc">{movie.overview}</p>
           </div>
+          <div className="cast">
+            {movie !== "" &&
+              movie.credits !== undefined &&
+              movie.credits.cast.map((record) => {
+                return (
+                  <div key={castIndex++} className="cast-record">
+                    <span className="cell">{record.name}</span>
+                    <span className="cell2">{record.character}</span>
+                  </div>
+                );
+              })}
+          </div>
         </div>
-        <div className="cast">
-          {movie !== "" &&
-            movie.credits !== undefined &&
-            movie.credits.cast.map((record) => {
-              return (
-                <div key={castIndex++} className="cast-record">
-                  <span className="cell">{record.name}</span>
-                  <span className="cell2">{record.character}</span>
-                </div>
-              );
-            })}
-        </div>
+
         <p className="rating">
           <i
             style={{

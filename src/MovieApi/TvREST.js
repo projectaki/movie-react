@@ -64,6 +64,12 @@ class TvREST {
       `https://api.themoviedb.org/3/tv/${id}/credits${this.apiKey}&language=en-US`
     );
   }
+
+  getProviders(id) {
+    return http.get(
+      `https://api.themoviedb.org/3/tv/${id}/watch/providers${this.apiKey}`
+    );
+  }
 }
 
 export default new TvREST();
