@@ -26,9 +26,15 @@ function App() {
         <Route
           exact
           path="/Home"
-          render={(props) => <Home {...props} setNav={setTag} />}
+          render={(props) => (
+            <Home {...props} setNav={setTag} isMovie={isMovie} />
+          )}
         ></Route>
-        <Route exact path="/MovieProfile/:id" component={MovieProfile}></Route>
+        <Route
+          exact
+          path="/MovieProfile/:id"
+          render={(props) => <MovieProfile {...props} isMovie={isMovie} />}
+        ></Route>
         <Route exact path="/Popular" component={Popular}></Route>
         <Route exact path="/NowPlaying" component={NowPlaying}></Route>
         <Route exact path="/Upcoming" component={Upcoming}></Route>

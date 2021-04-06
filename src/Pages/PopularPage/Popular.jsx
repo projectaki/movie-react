@@ -37,6 +37,7 @@ const Popular = () => {
       );
 
       setMovies(arr);
+
       sessionStorage.setItem(
         `${history.location.path}`,
         JSON.stringify(movies)
@@ -51,23 +52,21 @@ const Popular = () => {
   }, [ADAPTER]);
 
   useEffect(() => {
-    let isSub = true;
     const scrollMethod = async () => {
       const setPos = await parseInt(
         sessionStorage.getItem(`scroll${history.location.pathname}`)
       );
-      window.scrollTo(0, setPos);
+      setTimeout(() => {
+        window.scrollTo(0, setPos);
+      }, 100);
     };
-    if (isSub) scrollMethod();
-    return () => (isSub = false);
+    scrollMethod();
   }, [history.location.pathname]);
 
   useEffect(() => {
     const cancelToken = axios.CancelToken;
     const source = cancelToken.source();
-    getPopularMovies(pages, source.token).catch((e) => {
-      console.log(e);
-    });
+    getPopularMovies(pages, source.token).catch((e) => {});
     return () => {
       source.cancel("canceled async call");
     };

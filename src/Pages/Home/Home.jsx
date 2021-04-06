@@ -7,7 +7,7 @@ import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
 import { useLocation } from "react-router-dom";
 
-const Home = ({ setNav }) => {
+const Home = ({ setNav, isMovie }) => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState(
     JSON.parse(sessionStorage.getItem("movies")) || ""
@@ -23,7 +23,6 @@ const Home = ({ setNav }) => {
   }, [setNav]);
 
   useEffect(() => {
-    sessionStorage.removeItem("movies");
     setMovies("");
   }, [ADAPTER]);
 
@@ -74,6 +73,7 @@ const Home = ({ setNav }) => {
         setSearch={setSearch}
         getResults={getSearchResults}
         length={movies.length}
+        isMovie={isMovie}
       />
       {movies.length !== 0 && <MovieCardHolder movies={movies} />}
     </>

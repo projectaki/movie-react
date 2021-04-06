@@ -1,6 +1,7 @@
 .profile-cont {
   display: flex;
   padding: 3vmin;
+  height: 93vh;
 }
 
 .rating {
@@ -14,20 +15,15 @@
 }
 
 .movie-title {
-  font-size: 6vmin;
+  font-size: 5vmin;
+  font-weight: bold;
   margin: 0;
   font-family: sans-serif;
-}
-
-.movie-release {
-  margin: 0;
-  font-size: 4vmin;
-  padding-left: 6vw;
-  font-style: italic;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  color: #986b05;
+  color: #ea6910;
+  border-bottom: 0.3vh solid black;
+  padding-bottom: 1vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
 }
 
 .movie-desc {
@@ -35,7 +31,10 @@
   font-size: 3vmin;
   font-family: monospace;
   font-weight: 900;
-  padding-top: 8vh;
+  padding-top: 1vh;
+  color: #ea6910;
+  padding-right: 1vw;
+  padding-left: 1vw;
 }
 
 .text-cont {
@@ -52,12 +51,34 @@
 }
 
 .cast {
-  padding-top: 21vh;
-  padding-left: 3vw;
+  margin-top: 21vh;
+  margin-left: 3vw;
+  height: 40vh;
+  width: 30vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 0.1vw solid black;
 }
 
 .cast-record {
   font-size: 2vmin;
+
+  width: 28vw;
+  display: flex;
+}
+
+.cell {
+  width: 11vw;
+  border: 0.1vw solid black;
+  padding: 1vmin;
+  color: #ea10ae;
+}
+
+.cell2 {
+  color: #19b530;
+  width: 11vw;
+  border: 0.1vw solid black;
+  padding: 1vmin;
 }
 
 @media screen and (max-width: 800px) {
@@ -87,6 +108,8 @@
   }
 
   .cast {
-    padding-top: 0;
+    margin-top: 0;
+    width: 27vw;
+    margin: auto;
   }
 }

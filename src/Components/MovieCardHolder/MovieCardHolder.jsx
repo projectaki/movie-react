@@ -9,7 +9,7 @@ const MovieCardHolder = (props) => {
 
   const scrollHandler = () => {
     const path = history.location.pathname;
-    const pos = document.body.scrollTop || document.documentElement.scrollTop;
+    const pos = window.pageYOffset;
     sessionStorage.setItem(`scroll${path}`, pos);
     window.scrollTo(0, 0);
   };

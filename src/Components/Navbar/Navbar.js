@@ -15,29 +15,30 @@ const Navbar = (props) => {
 
   return (
     <div id="n" className="navbar">
-      <div style={{ display: "flex", alignItems: "center", gap: "1vw" }}>
-        <Link
-          to={{ pathname: "/", reset: true }}
-          style={{ textDecoration: "none" }}
-          replace
+      <Link
+        to={{ pathname: "/", reset: true }}
+        style={{ textDecoration: "none", position: "absolute", left: "2vw" }}
+        replace
+      >
+        <p
+          style={{
+            fontSize: "4vmin",
+            fontWeight: "bold",
+            color: "#E3C11B",
+          }}
         >
-          <p
-            style={{
-              fontSize: "4vmin",
-              fontWeight: "bold",
-              color: "black",
-            }}
-          >
-            {props.isMovie && "MOVIES"}
-            {!props.isMovie && "TV SHOWS"}
-          </p>
-        </Link>
-
+          Home
+        </p>
+      </Link>
+      <div style={{ fontSize: "4vmin", fontWeight: "900", color: "#1B78E3" }}>
+        {props.isMovie && "MOVIES"}
+        {!props.isMovie && "TV SHOWS"}
         <i
           style={{ paddingLeft: "1vw", fontSize: "4vmin" }}
           className="fas fa-tv fa-2x"
         ></i>
       </div>
+
       <div className="link-cont">
         <Link
           activeStyle={{ backgroundColor: "#CAC40E", color: "black" }}

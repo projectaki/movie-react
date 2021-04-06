@@ -8,7 +8,7 @@ import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
 
-const MovieProfile = () => {
+const MovieProfile = ({ isMovie }) => {
   const passedMovie = useHistory().location.movie;
   const currentMovieId = useHistory().location.pathname.substring(14);
   const [movie, setMovie] = useState("");
@@ -96,14 +96,21 @@ const MovieProfile = () => {
         <div className="text-cont">
           <div className="title-cont">
             <h2 className="movie-title">
-              {movie.original_title || movie.original_name}
-            </h2>
-            <h2 className="movie-release">
-              {movie !== "" &&
-                ((movie.release_date !== undefined &&
-                  movie.release_date.substring(0, 4)) ||
-                  (movie.first_air_date !== undefined &&
-                    movie.first_air_date.substring(0, 4)))}
+              {movie.original_title || movie.original_name} (
+              <span
+                style={{
+                  fontSize: "6vmin",
+                  fontStyle: "italic",
+                  color: "#EAC510",
+                }}
+              >
+                {movie !== "" &&
+                  ((movie.release_date !== undefined &&
+                    movie.release_date.substring(0, 4)) ||
+                    (movie.first_air_date !== undefined &&
+                      movie.first_air_date.substring(0, 4)))}
+              </span>
+              )
             </h2>
           </div>
           <div className="desc-cont">
@@ -111,29 +118,40 @@ const MovieProfile = () => {
           </div>
         </div>
         <div className="cast">
-          <div style={{ fontWeight: "bold" }}>Cast: </div>
           {movie !== "" &&
             movie.credits !== undefined &&
             movie.credits.cast.map((record) => {
               return (
                 <div key={castIndex++} className="cast-record">
-                  {record.name} : {record.character}
+                  <span className="cell">{record.name}</span>
+                  <span className="cell2">{record.character}</span>
                 </div>
               );
             })}
         </div>
         <p className="rating">
           <i
-            style={{ paddingRight: "1vw", fontSize: "9vmin", color: "#986B05" }}
+            style={{
+              paddingRight: "1vw",
+              fontSize: "9vmin",
+              color: "#FFD700",
+              textShadow: "0 0 15px white",
+            }}
             className="fas fa-star fa-1x"
           ></i>
-          {movie.vote_average}
+          <span style={{ color: "#FFD700", textShadow: "0 0 10px black" }}>
+            {movie.vote_average}
+          </span>
         </p>
       </div>
-      <h2 style={{ textAlign: "center" }}>Reccomended Movies</h2>
+      <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
+        {`Reccomended ${isMovie ? "movies" : "tv shows"}`}
+      </h2>
       {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
-      <h2 style={{ textAlign: "center" }}>
-        Similar movies based on keywords and genres
+      <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
+        {`Similar ${
+          isMovie ? "movies" : "tv shows"
+        } based on keywords and genres`}
       </h2>
       {movie.similar !== undefined && (
         <MovieCardHolder movies={movie.similar} />
