@@ -132,7 +132,7 @@ const MovieProfile = ({ isMovie }) => {
               })}
           </div>
         </div>
-        <div style={{ marginTop: "15vh", marginLeft: "5vw" }}>
+        <div className="prov-cont">
           <Providers providers={movie.providers} />
         </div>
 

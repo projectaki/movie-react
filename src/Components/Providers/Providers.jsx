@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from "react";
 import TvREST from "../../MovieApi/TvREST";
+import "./Provider.css";
 
 const Providers = ({ providers }) => {
   const [country, setCountry] = useState(
-    JSON.parse(sessionStorage.getItem("country")) || ""
+    JSON.parse(sessionStorage.getItem("country")) || "Denmark"
   );
   const [countryMap, setCountryMap] = useState(
     new Map(JSON.parse(sessionStorage.getItem("countryMap"))) || new Map()
   );
 
   const [flatRate, setFlatRate] = useState([]);
-  //   const providers = {
-  //     DK: {
-  //       flatrate: [
-  //         {
-  //           provider_name: "netflix",
-  //           logo_path: "/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg",
-  //         },
-  //       ],
-  //     },
-  //   };
+
   useEffect(() => {
     console.log(providers);
     if (providers !== undefined) {
@@ -57,42 +49,46 @@ const Providers = ({ providers }) => {
   }, [countryMap]);
 
   return (
-    <div>
-      <select
-        style={{
-          width: "50vmin",
-          borderRadius: "5px",
-          backgroundColor: "#484848",
-          color: "white",
-        }}
-        name="Country"
-        id="country"
-        value={country}
-        onChange={(e) => {
-          setCountry(e.target.value);
-          sessionStorage.setItem("country", JSON.stringify(e.target.value));
-        }}
-      >
-        {[...countryMap.keys()].map((country, index) => {
-          return (
-            <option key={index} value={country}>
-              {country}
-            </option>
-          );
-        })}
-      </select>
-      <div style={{ display: "flex", marginTop: "2vmin" }}>
+    <>
+      <div className="prov-disp">
+        <select
+          style={{
+            width: "50vmin",
+            borderRadius: "5px",
+            backgroundColor: "#484848",
+            color: "white",
+          }}
+          name="Country"
+          id="country"
+          value={country}
+          onChange={(e) => {
+            setCountry(e.target.value);
+            sessionStorage.setItem("country", JSON.stringify(e.target.value));
+          }}
+        >
+          {[...countryMap.keys()].map((country, index) => {
+            return (
+              <option key={index} value={country}>
+                {country}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div className="prov-disp-2">
         {flatRate.map((x, idx) => {
           return (
             <img
               key={idx}
-              style={{ width: "50px", marginRight: "1vw" }}
-              src={`https://image.tmdb.org/t/p/w200${x.logo_path}`}
+              style={{ marginRight: "1vw" }}
+              className="provider-img"
+              src={`https://image.tmdb.org/t/p/w500${x.logo_path}`}
             ></img>
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 

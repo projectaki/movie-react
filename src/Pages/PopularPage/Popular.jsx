@@ -22,29 +22,23 @@ const Popular = () => {
 
   const getPopularMovies = useCallback(
     async (page, cancelToken) => {
-      const createArray = (page) => {
-        const temp = [];
-        for (let i = 1; i <= page; i++) {
-          temp.push(i);
-        }
-        return temp;
-      };
-
-      const arr = await Promise.all(
-        createArray(page).map(async (x) => {
-          return await ADAPTER.getPopular(x, cancelToken);
-        })
-      );
+      //console.log("hi");
+      let arr = [];
+      for (let i = 1; i <= page; i++) {
+        const pop = await ADAPTER.getPopular(i, cancelToken);
+        //console.log(pop.data);
+        const filtered = pop.data.results.filter(
+          (x) => x.original_language === "en"
+        );
+        arr = [...arr, ...filtered];
+      }
 
       setMovies(arr);
 
-      sessionStorage.setItem(
-        `${history.location.path}`,
-        JSON.stringify(movies)
-      );
+      sessionStorage.setItem(`${history.location.path}`, JSON.stringify(arr));
       sessionStorage.setItem(`${history.location.path}pages`, pages);
     },
-    [ADAPTER, history.location.path, pages, movies]
+    [ADAPTER, history.location.path, pages]
   );
 
   useEffect(() => {
@@ -67,6 +61,7 @@ const Popular = () => {
     const cancelToken = axios.CancelToken;
     const source = cancelToken.source();
     getPopularMovies(pages, source.token).catch((e) => {});
+    console.log("lol");
     return () => {
       source.cancel("canceled async call");
     };
@@ -80,17 +75,9 @@ const Popular = () => {
   };
   return (
     <>
-      {movies !== null &&
-        movies.map((page) => {
-          return (
-            movies.length !== 0 && (
-              <MovieCardHolder
-                key={page.data.page}
-                movies={page.data.results}
-              />
-            )
-          );
-        })}
+      {movies !== null && movies.length !== 0 && (
+        <MovieCardHolder movies={movies} />
+      )}
       <div className="load-cont">
         <div className="load-more-btn" onClick={() => loadHandler()}>
           Load more...
