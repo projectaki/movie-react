@@ -25,19 +25,26 @@ const Navbar = (props) => {
             fontSize: "4vmin",
             fontWeight: "bold",
             color: "#E3C11B",
+            margin: "0",
           }}
         >
           Home
         </p>
       </Link>
-      <div style={{ fontSize: "4vmin", fontWeight: "900", color: "#1B78E3" }}>
-        {props.isMovie && "MOVIES"}
-        {!props.isMovie && "TV SHOWS"}
-        <i
-          style={{ paddingLeft: "1vw", fontSize: "4vmin" }}
-          className="fas fa-tv fa-2x"
-        ></i>
-      </div>
+      <Link
+        to={{ pathname: "/Home", reset: true }}
+        style={{ textDecoration: "none" }}
+        replace
+      >
+        <div style={{ fontSize: "4vmin", fontWeight: "900", color: "#1B78E3" }}>
+          {props.isMovie && "MOVIES"}
+          {!props.isMovie && "TV SHOWS"}
+          <i
+            style={{ paddingLeft: "1vw", fontSize: "4vmin" }}
+            className="fas fa-tv fa-2x"
+          ></i>
+        </div>
+      </Link>
 
       <div className="link-cont">
         <Link

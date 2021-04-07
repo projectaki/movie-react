@@ -7,6 +7,7 @@ import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
+import Providers from "../../Components/Providers/Providers";
 
 const MovieProfile = ({ isMovie }) => {
   const [isMovieState] = useState(
@@ -20,9 +21,7 @@ const MovieProfile = ({ isMovie }) => {
   );
   let castIndex = 0;
 
-  useEffect(() => {
-    console.log(movie.providers);
-  }, [movie]);
+  useEffect(() => {}, [movie]);
 
   const getMovieDetails = useCallback(
     async (id) => {
@@ -133,6 +132,9 @@ const MovieProfile = ({ isMovie }) => {
               })}
           </div>
         </div>
+        <div style={{ marginTop: "15vh", marginLeft: "5vw" }}>
+          <Providers providers={movie.providers} />
+        </div>
 
         <p className="rating">
           <i
@@ -150,7 +152,7 @@ const MovieProfile = ({ isMovie }) => {
         </p>
       </div>
       <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
-        {`Reccomended ${isMovieState ? "movies" : "tv shows"}`}
+        {`Recommended ${isMovieState ? "movies" : "tv shows"}`}
       </h2>
       {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
       <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>

@@ -70,6 +70,12 @@ class TvREST {
       `https://api.themoviedb.org/3/tv/${id}/watch/providers${this.apiKey}`
     );
   }
+
+  getCountryList() {
+    return http.get(
+      `https://api.themoviedb.org/3/configuration/countries${this.apiKey}`
+    );
+  }
 }
 
 export default new TvREST();

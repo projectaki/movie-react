@@ -10,6 +10,7 @@ import TopButton from "./Components/TopButton/TopButton";
 import Location from "./Components/Location/Location";
 import Main from "./Pages/Main/Main";
 import { useState } from "react";
+import Providers from "./Components/Providers/Providers";
 
 function App() {
   const [isMovie, setIsMovie] = useState(
@@ -38,7 +39,7 @@ function App() {
         <Route exact path="/Popular" component={Popular}></Route>
         <Route exact path="/NowPlaying" component={NowPlaying}></Route>
         <Route exact path="/Upcoming" component={Upcoming}></Route>
-        <Route exact path="/TEST" component={Location}></Route>
+        <Route exact path="/TEST" component={Providers}></Route>
       </Switch>
     </>
   );
