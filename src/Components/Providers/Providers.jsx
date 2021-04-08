@@ -52,7 +52,7 @@ const Providers = ({ providers }) => {
       <div className="prov-disp">
         <select
           style={{
-            width: "50vmin",
+            width: "30vmin",
             borderRadius: "5px",
             backgroundColor: "#484848",
             color: "white",

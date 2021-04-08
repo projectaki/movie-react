@@ -1,26 +1,42 @@
 .profile-cont {
   display: flex;
+  flex-wrap: wrap;
   padding: 3vmin;
   min-height: 93vh;
+  width: 80vw;
+  position: absolute;
+  background-color: rgb(20, 20, 20);
+  margin-top: 30vh;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  justify-content: center;
+  box-shadow: 0 0 15px 5px black;
+}
+
+.backdrop {
+  width: 100%;
+  position: absolute;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  z-index: 0;
 }
 
 .rating {
-  position: absolute;
-  font-size: 10vmin;
-  font-weight: 900;
-  font-family: sans-serif !important;
-  right: 5vw;
-  top: 10vh;
+  font-size: 5vmin;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie-title {
-  font-size: 5.5vmin;
+  font-size: 4vmin;
   font-weight: bold;
   margin: 0;
-  font-family: Alegreya sans;
+  font-family: CeraMed;
   color: white;
-  border-bottom: 0.3vh solid black;
+  border-bottom: 1px solid rgb(120, 120, 120);
   padding-bottom: 1vh;
   padding-right: 1vw;
   padding-left: 1vw;
@@ -28,9 +44,8 @@
 
 .movie-desc {
   text-align: justify;
-  font-size: 4vmin;
-  font-family: Alegreya sans;
-  font-weight: 900;
+  font-size: 2.5vmin;
+  font-family: CeraReg;
   padding-top: 1vh;
   color: white;
   padding-right: 1vw;
@@ -38,52 +53,53 @@
 }
 
 .text-cont {
-  margin-left: 2vw;
+  width: 550px;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-cont {
   display: flex;
-  width: 40vw;
   justify-content: center;
+  margin-top: 3vh;
 }
 .prov-cont {
-  margin-top: 33vh;
-  padding-left: 5.4vw;
+  justify-content: flex-start;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
+  margin-left: 1vw;
+}
+
+.seas-cont {
+  margin-left: 1vw;
 }
 .desc-cont {
-  width: 40vw;
   margin: auto;
 }
 
 .cast {
-  margin: auto;
   margin-top: 10vh;
-  height: 40vh;
-  width: 30vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 2vmin;
-  box-shadow: 0 0 4px 2px black;
-  border-radius: 5px;
+  max-height: 40vh;
+  width: 26vw;
+  overflow-y: auto;
 }
 
 .cast-record {
   font-size: 2vmin;
   margin-bottom: 0.8vh;
-  width: 30vw;
   display: flex;
   text-align: center;
 }
 
 .cell {
-  width: 15vw;
   font-family: Alegreya sans;
   color: white;
+  width: 50%;
 }
 
 .cell2 {
   color: white;
-  width: 15vw;
+
   font-family: Alegreya sans;
 }
 

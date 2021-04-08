@@ -1,6 +1,6 @@
 .search-bar {
   top: 1vh;
-  left: 70%;
+  right: 2%;
   position: absolute;
   width: 60vmin;
   height: 5vh;
@@ -37,7 +37,7 @@ input[type="search"] {
   font-family: Alegreya sans;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1150px) {
   .search-bar {
     top: 8vh;
     left: 50%;

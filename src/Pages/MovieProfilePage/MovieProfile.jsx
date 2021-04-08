@@ -22,9 +22,9 @@ const MovieProfile = () => {
   );
   let castIndex = 0;
 
-  // useEffect(() => {
-  //   console.log(movie);
-  // }, [movie]);
+  useEffect(() => {
+    console.log(movie);
+  }, [movie]);
 
   const getMovieDetails = useCallback(
     async (id) => {
@@ -97,9 +97,41 @@ const MovieProfile = () => {
 
   return (
     <>
+      <div>
+        <img
+          className="backdrop"
+          src={`http://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        ></img>
+      </div>
       <div className="profile-cont">
         <div>
           <MovieCard data={movie} />
+          <p className="rating">
+            <i
+              style={{
+                paddingRight: "1vw",
+                fontSize: "7vmin",
+                color: "#FFD700",
+                textShadow: "0 0 5px black",
+              }}
+              className="fas fa-star fa-1x"
+            ></i>
+            <span style={{ color: "#FFD700", textShadow: "0 0 10px black" }}>
+              {movie.vote_average}
+            </span>
+          </p>
+          <div className="cast">
+            {movie !== "" &&
+              movie.credits !== undefined &&
+              movie.credits.cast.map((record) => {
+                return (
+                  <div key={castIndex++} className="cast-record">
+                    <span className="cell">{record.name}</span>
+                    <span className="cell2">{record.character}</span>
+                  </div>
+                );
+              })}
+          </div>
         </div>
         <div className="text-cont">
           <div className="title-cont">
@@ -107,9 +139,10 @@ const MovieProfile = () => {
               {movie.original_title || movie.original_name} (
               <span
                 style={{
-                  fontSize: "6vmin",
                   fontStyle: "italic",
-                  color: "#EAC510",
+                  color: "rgb(120,120,120)",
+                  marginLeft: "1vw",
+                  marginRight: "1vw",
                 }}
               >
                 {movie !== "" &&
@@ -124,54 +157,31 @@ const MovieProfile = () => {
           <div className="desc-cont">
             <p className="movie-desc">{movie.overview}</p>
           </div>
-          <div className="cast">
-            {movie !== "" &&
-              movie.credits !== undefined &&
-              movie.credits.cast.map((record) => {
-                return (
-                  <div key={castIndex++} className="cast-record">
-                    <span className="cell">{record.name}</span>
-                    <span className="cell2">{record.character}</span>
-                  </div>
-                );
-              })}
+          <div className="prov-cont">
+            <Providers providers={movie.providers} />
           </div>
-          {!isMovieState && movie.info !== undefined && (
-            <Seasons seasons={movie.info.seasons} movieid={movie.id} />
-          )}
+          <div className="seas-cont">
+            {!isMovieState && movie.info !== undefined && (
+              <Seasons seasons={movie.info.seasons} movieid={movie.id} />
+            )}
+          </div>
         </div>
-        <div className="prov-cont">
-          <Providers providers={movie.providers} />
-        </div>
+        <div></div>
 
-        <p className="rating">
-          <i
-            style={{
-              paddingRight: "1vw",
-              fontSize: "7vmin",
-              color: "#FFD700",
-              textShadow: "0 0 5px black",
-            }}
-            className="fas fa-star fa-1x"
-          ></i>
-          <span style={{ color: "#FFD700", textShadow: "0 0 10px black" }}>
-            {movie.vote_average}
-          </span>
-        </p>
+        <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
+          {`Recommended ${isMovieState ? "movies" : "tv shows"}`}
+        </h2>
+        {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
+        <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
+          {`Similar ${
+            isMovieState ? "movies" : "tv shows"
+          } based on keywords and genres`}
+        </h2>
+        {movie.similar !== undefined && (
+          <MovieCardHolder movies={movie.similar} />
+        )}
+        <Footer />
       </div>
-      <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
-        {`Recommended ${isMovieState ? "movies" : "tv shows"}`}
-      </h2>
-      {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
-      <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
-        {`Similar ${
-          isMovieState ? "movies" : "tv shows"
-        } based on keywords and genres`}
-      </h2>
-      {movie.similar !== undefined && (
-        <MovieCardHolder movies={movie.similar} />
-      )}
-      <Footer />
     </>
   );
 };

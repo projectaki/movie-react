@@ -4,14 +4,14 @@
 
 .prov-disp {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .prov-disp-2 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 2vh;
   flex-wrap: wrap;
 }

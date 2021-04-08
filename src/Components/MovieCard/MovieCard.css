@@ -1,6 +1,6 @@
 .movie-card {
   padding: 4vmin 2vmin;
-  width: 300px;
+  width: 250px;
   margin: 0;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .movie-card-img {
-  width: 300px;
+  width: 250px;
   box-shadow: 0 0 30px 2vmin black;
 }
 
