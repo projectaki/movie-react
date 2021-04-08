@@ -51,13 +51,7 @@ const Providers = ({ providers }) => {
     <>
       <div className="prov-disp">
         <select
-          style={{
-            width: "30vmin",
-            borderRadius: "5px",
-            backgroundColor: "#484848",
-            color: "white",
-            fontSize: "16px",
-          }}
+          className="country-selector"
           name="Country"
           id="country"
           value={country}
@@ -68,7 +62,11 @@ const Providers = ({ providers }) => {
         >
           {[...countryMap.keys()].map((country, index) => {
             return (
-              <option key={index} value={country} style={{ fontSize: "16px" }}>
+              <option
+                key={index}
+                value={country}
+                style={{ fontSize: "1.5vw", padding: "1vh" }}
+              >
                 {country}
               </option>
             );
@@ -77,17 +75,20 @@ const Providers = ({ providers }) => {
       </div>
 
       <div className="prov-disp-2">
-        {flatRate.map((x, idx) => {
-          return (
-            <img
-              key={idx}
-              style={{ marginRight: "1vw" }}
-              className="provider-img"
-              src={`https://image.tmdb.org/t/p/w500${x.logo_path}`}
-              alt={x.name}
-            ></img>
-          );
-        })}
+        {flatRate.length !== 0 &&
+          flatRate.map((x, idx) => {
+            return (
+              <img
+                key={idx}
+                style={{ marginRight: "1vw" }}
+                className="provider-img"
+                src={`https://image.tmdb.org/t/p/w500${x.logo_path}`}
+                alt={x.name}
+              ></img>
+            );
+          })}
+        {flatRate.length === 0 &&
+          "No streaming service available in this country..."}
       </div>
     </>
   );

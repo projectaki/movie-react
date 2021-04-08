@@ -14,4 +14,21 @@
   justify-content: flex-start;
   margin-top: 2vh;
   flex-wrap: wrap;
+  color: white;
+}
+
+.country-selector {
+  width: 15vmin;
+  height: 5vmin;
+  border-radius: 5px;
+  background-color: #484848;
+  color: white;
+  font-size: 2vmin;
+}
+
+@media screen and (max-width: 800px) {
+  .country-selector {
+    width: 17vmin;
+    height: 7vmin;
+  }
 }

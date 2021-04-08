@@ -1,7 +1,11 @@
 .episode-container {
+  border-top: 1px solid rgb(160, 160, 160);
+  padding-top: 2vh;
 }
 
 .episode {
+  font-family: CeraBold;
+  font-size: 2vw;
 }
 
 .episode:hover {
@@ -9,4 +13,40 @@
 }
 
 .episode-desc {
+  color: rgb(200, 200, 200);
+  border-top: 1px solid rgb(200, 200, 200);
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding: 2vh 0;
+  font-family: CeraReg;
+}
+
+.episode-record {
+  margin-bottom: 1vh;
+  font-size: 3vmin;
+  color: rgb(160, 160, 160);
+}
+
+.season-selector {
+  width: 15vmin;
+  height: 5vmin;
+  border-radius: 5px;
+  background-color: #484848;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 2vh;
+  font-size: 2vmin;
+}
+
+@media screen and (max-width: 800px) {
+  .episode {
+    font-size: 4vmin;
+  }
+
+  .episode-record {
+    font-size: 4vmin;
+  }
+  .season-selector {
+    width: 17vmin;
+    height: 7vmin;
+  }
 }

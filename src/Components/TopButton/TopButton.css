@@ -5,7 +5,7 @@
   transform: translateX(-50%);
   top: 5%;
   z-index: 1;
-  color: pink;
+  color: #11a2ec;
   position: fixed;
   text-shadow: 0 0 20px black;
   animation: float 6s ease-in-out infinite;

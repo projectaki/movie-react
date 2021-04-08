@@ -103,76 +103,95 @@ const MovieProfile = () => {
           src={`http://image.tmdb.org/t/p/original${movie.backdrop_path}`}
         ></img>
       </div>
-      <div className="profile-cont">
-        <div>
-          <MovieCard data={movie} />
-          <p className="rating">
-            <i
-              style={{
-                paddingRight: "1vw",
-                fontSize: "7vmin",
-                color: "#FFD700",
-                textShadow: "0 0 5px black",
-              }}
-              className="fas fa-star fa-1x"
-            ></i>
-            <span style={{ color: "#FFD700", textShadow: "0 0 10px black" }}>
-              {movie.vote_average}
-            </span>
-          </p>
-          <div className="cast">
-            {movie !== "" &&
-              movie.credits !== undefined &&
-              movie.credits.cast.map((record) => {
-                return (
-                  <div key={castIndex++} className="cast-record">
-                    <span className="cell">{record.name}</span>
-                    <span className="cell2">{record.character}</span>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-        <div className="text-cont">
-          <div className="title-cont">
-            <h2 className="movie-title">
-              {movie.original_title || movie.original_name} (
-              <span
-                style={{
-                  fontStyle: "italic",
-                  color: "rgb(120,120,120)",
-                  marginLeft: "1vw",
-                  marginRight: "1vw",
-                }}
-              >
-                {movie !== "" &&
-                  ((movie.release_date !== undefined &&
-                    movie.release_date.substring(0, 4)) ||
-                    (movie.first_air_date !== undefined &&
-                      movie.first_air_date.substring(0, 4)))}
-              </span>
-              )
-            </h2>
-          </div>
-          <div className="desc-cont">
-            <p className="movie-desc">{movie.overview}</p>
-          </div>
-          <div className="prov-cont">
-            <Providers providers={movie.providers} />
-          </div>
-          <div className="seas-cont">
-            {!isMovieState && movie.info !== undefined && (
-              <Seasons seasons={movie.info.seasons} movieid={movie.id} />
-            )}
-          </div>
-        </div>
-        <div></div>
 
-        <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
+      <div className="profile-cont">
+        <div className="wrapper">
+          <div>
+            <MovieCard data={movie} />
+            <p className="rating">
+              <i
+                style={{
+                  paddingRight: "1vw",
+                  fontSize: "7vmin",
+                  color: "#FFD700",
+                  textShadow: "0 0 5px black",
+                }}
+                className="fas fa-star fa-1x"
+              ></i>
+              <span style={{ color: "#FFD700", textShadow: "0 0 10px black" }}>
+                {movie.vote_average}
+              </span>
+            </p>
+            <div className="cast">
+              {movie !== "" &&
+                movie.credits !== undefined &&
+                movie.credits.cast.map((record) => {
+                  return (
+                    <div key={castIndex++} className="cast-record">
+                      <span className="cell">{record.name}</span>
+                      <span className="cell2">{record.character}</span>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+          <div className="text-cont">
+            <div className="title-cont">
+              <h2 className="movie-title">
+                {movie.original_title || movie.original_name} (
+                <span
+                  style={{
+                    fontStyle: "italic",
+                    color: "rgb(120,120,120)",
+                    marginLeft: "1vw",
+                    marginRight: "1vw",
+                  }}
+                >
+                  {movie !== "" &&
+                    ((movie.release_date !== undefined &&
+                      movie.release_date.substring(0, 4)) ||
+                      (movie.first_air_date !== undefined &&
+                        movie.first_air_date.substring(0, 4)))}
+                </span>
+                )
+              </h2>
+            </div>
+            <div className="desc-cont">
+              <p className="movie-desc">{movie.overview}</p>
+            </div>
+            <div className="prov-cont">
+              <Providers providers={movie.providers} />
+            </div>
+            <div className="seas-cont">
+              {!isMovieState && movie.info !== undefined && (
+                <Seasons seasons={movie.info.seasons} movieid={movie.id} />
+              )}
+            </div>
+          </div>
+        </div>
+
+        <h2
+          style={{
+            textAlign: "center",
+            color: "white",
+            fontSize: "6vmin",
+            fontFamily: "CeraBold",
+
+            padding: "1vh 0",
+          }}
+        >
           {`Recommended ${isMovieState ? "movies" : "tv shows"}`}
         </h2>
         {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
-        <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
+        <h2
+          style={{
+            textAlign: "center",
+            color: "white",
+            fontSize: "6vmin",
+
+            padding: "1vh 0",
+          }}
+        >
           {`Similar ${
             isMovieState ? "movies" : "tv shows"
           } based on keywords and genres`}

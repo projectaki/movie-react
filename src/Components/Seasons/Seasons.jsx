@@ -18,14 +18,7 @@ const Seasons = ({ seasons, movieid }) => {
     <>
       <div>
         <select
-          style={{
-            width: "15vmin",
-            borderRadius: "5px",
-            backgroundColor: "#484848",
-            color: "white",
-            fontSize: "16px",
-            marginBottom: "2vh",
-          }}
+          className="season-selector"
           value={season}
           onChange={(e) => {
             setSeason(e.target.value);
@@ -42,7 +35,7 @@ const Seasons = ({ seasons, movieid }) => {
         <div className="episode-container">
           {episodes.map((episode, idx) => {
             return (
-              <div key={idx}>
+              <div className="episode-record" key={idx}>
                 <div>
                   S{episode.season_number} E{episode.episode_number}:{" "}
                   <span
