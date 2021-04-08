@@ -36,6 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 10vw;
 }
 
 .movie-title {
@@ -61,7 +62,7 @@
 }
 
 .text-cont {
-  width: 550px;
+  width: 700px;
   justify-content: center;
   align-items: center;
 }
@@ -90,9 +91,9 @@
 .cast {
   margin-top: 10vh;
   max-height: 40vh;
-  width: 26vw;
+  width: 18vw;
   overflow-y: auto;
-  margin-right: 3vw;
+  margin-right: 8vw;
 }
 
 .cast-record {
@@ -122,5 +123,9 @@
 
   .cast {
     display: none;
+  }
+
+  .rating {
+    margin-right: 1vw;
   }
 }

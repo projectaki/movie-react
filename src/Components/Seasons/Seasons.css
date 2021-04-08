@@ -46,7 +46,8 @@
     font-size: 4vmin;
   }
   .season-selector {
-    width: 17vmin;
-    height: 7vmin;
+    width: 35vmin;
+    height: 15vmin;
+    font-size: 16px;
   }
 }

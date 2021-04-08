@@ -65,7 +65,7 @@ const Providers = ({ providers }) => {
               <option
                 key={index}
                 value={country}
-                style={{ fontSize: "1.5vw", padding: "1vh" }}
+                style={{ fontSize: "16px", padding: "1vh" }}
               >
                 {country}
               </option>
