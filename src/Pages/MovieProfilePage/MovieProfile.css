@@ -8,18 +8,18 @@
   position: absolute;
   font-size: 10vmin;
   font-weight: 900;
-  font-family: sans-serif;
+  font-family: sans-serif !important;
   right: 5vw;
   top: 10vh;
   margin: 0;
 }
 
 .movie-title {
-  font-size: 5vmin;
+  font-size: 5.5vmin;
   font-weight: bold;
   margin: 0;
-  font-family: sans-serif;
-  color: #ea6910;
+  font-family: Alegreya sans;
+  color: white;
   border-bottom: 0.3vh solid black;
   padding-bottom: 1vh;
   padding-right: 1vw;
@@ -28,11 +28,11 @@
 
 .movie-desc {
   text-align: justify;
-  font-size: 3vmin;
-  font-family: monospace;
+  font-size: 4vmin;
+  font-family: Alegreya sans;
   font-weight: 900;
   padding-top: 1vh;
-  color: #ea6910;
+  color: white;
   padding-right: 1vw;
   padding-left: 1vw;
 }
@@ -77,13 +77,14 @@
 
 .cell {
   width: 15vw;
-
-  color: #ea10ae;
+  font-family: Alegreya sans;
+  color: white;
 }
 
 .cell2 {
-  color: #19b530;
+  color: white;
   width: 15vw;
+  font-family: Alegreya sans;
 }
 
 @media screen and (max-width: 800px) {

@@ -13,7 +13,6 @@ const Providers = ({ providers }) => {
   const [flatRate, setFlatRate] = useState([]);
 
   useEffect(() => {
-    console.log(providers);
     if (providers !== undefined) {
       if (providers.results[countryMap.get(country)] !== undefined) {
         const currentProv = providers.results[countryMap.get(country)];
@@ -57,6 +56,7 @@ const Providers = ({ providers }) => {
             borderRadius: "5px",
             backgroundColor: "#484848",
             color: "white",
+            fontSize: "16px",
           }}
           name="Country"
           id="country"
@@ -68,7 +68,7 @@ const Providers = ({ providers }) => {
         >
           {[...countryMap.keys()].map((country, index) => {
             return (
-              <option key={index} value={country}>
+              <option key={index} value={country} style={{ fontSize: "16px" }}>
                 {country}
               </option>
             );
@@ -84,6 +84,7 @@ const Providers = ({ providers }) => {
               style={{ marginRight: "1vw" }}
               className="provider-img"
               src={`https://image.tmdb.org/t/p/w500${x.logo_path}`}
+              alt={x.name}
             ></img>
           );
         })}

@@ -1,7 +1,6 @@
 .search-bar {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 1vh;
+  left: 70%;
   position: absolute;
   width: 60vmin;
   height: 5vh;
@@ -12,29 +11,6 @@
   color: black;
   text-align: center;
   font-size: 2.5vmin;
-}
-
-.up-pos {
-  top: 11vh;
-}
-
-.down-pos {
-  top: 50%;
-}
-
-.anim {
-  animation-name: goup;
-  animation-duration: 0.1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes goup {
-  from {
-    top: 50%;
-  }
-  to {
-    top: calc(11vh);
-  }
 }
 
 .search-bar::placeholder {
@@ -58,4 +34,13 @@ button:focus {
 
 input[type="search"] {
   font-size: 16px;
+  font-family: Alegreya sans;
+}
+
+@media screen and (max-width: 800px) {
+  .search-bar {
+    top: 8vh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

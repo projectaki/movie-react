@@ -7,12 +7,10 @@ const Footer = () => {
       <p
         style={{
           fontSize: "2vw",
-          fontFamily: "sans-serif",
-          fontWeight: "900",
           color: "#DCEC11",
         }}
       >
-        API provided by https://www.themoviedb.org/
+        {`API provided by themoviedb.org & justwatch.com`}
       </p>
     </div>
   );

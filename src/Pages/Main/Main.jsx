@@ -20,12 +20,12 @@ const Main = () => {
   return (
     <div className="main-page">
       <div className="select-cont">
-        <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/Home" style={{ textDecoration: "none" }}>
           <div onClick={() => setTv()} className="select">
             Tv-series
           </div>
         </Link>
-        <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/Home" style={{ textDecoration: "none" }}>
           <div onClick={() => setMovie()} className="select">
             Movies
           </div>

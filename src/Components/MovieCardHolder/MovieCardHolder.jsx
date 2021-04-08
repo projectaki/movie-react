@@ -14,18 +14,20 @@ const MovieCardHolder = (props) => {
     window.scrollTo(0, 0);
   };
   return (
-    <div className="movie-container">
-      {props.movies.map((movie) => (
-        <Link
-          key={movie.id}
-          to={{ pathname: `/MovieProfile/${movie.id}`, movie }}
-        >
-          <div onClick={() => scrollHandler()} className="movie-card-wrapper">
-            <MovieCard data={movie} />
-          </div>
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="movie-container">
+        {props.movies.map((movie) => (
+          <Link
+            key={movie.id}
+            to={{ pathname: `/MovieProfile/${movie.id}`, movie }}
+          >
+            <div onClick={() => scrollHandler()} className="movie-card-wrapper">
+              <MovieCard data={movie} />
+            </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 

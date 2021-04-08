@@ -12,3 +12,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@font-face {
+  font-family: League Spartan;
+  src: url("./fonts/LeagueSpartan-Bold.otf");
+}
+
+@font-face {
+  font-family: Alegreya Sans;
+  src: url("./fonts/AlegreyaSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: CeraReg;
+  src: url("./fonts/CeraProRegular.otf");
+}
+
+@font-face {
+  font-family: CeraMed;
+  src: url("./fonts/CeraProMedium.otf");
+}
+
+@font-face {
+  font-family: CeraBold;
+  src: url("./fonts/CeraProBold.otf");
+}

@@ -76,6 +76,12 @@ class TvREST {
       `https://api.themoviedb.org/3/configuration/countries${this.apiKey}`
     );
   }
+
+  getSeasonInfo(id, seasonNumber) {
+    return http.get(
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}${this.apiKey}&language=en-US`
+    );
+  }
 }
 
 export default new TvREST();

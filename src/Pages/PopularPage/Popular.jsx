@@ -22,7 +22,6 @@ const Popular = () => {
 
   const getPopularMovies = useCallback(
     async (page, cancelToken) => {
-      //console.log("hi");
       let arr = [];
       for (let i = 1; i <= page; i++) {
         const pop = await ADAPTER.getPopular(i, cancelToken);
@@ -61,7 +60,7 @@ const Popular = () => {
     const cancelToken = axios.CancelToken;
     const source = cancelToken.source();
     getPopularMovies(pages, source.token).catch((e) => {});
-    console.log("lol");
+
     return () => {
       source.cancel("canceled async call");
     };

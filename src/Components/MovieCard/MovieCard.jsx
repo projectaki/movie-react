@@ -7,7 +7,7 @@ const MovieCard = (props) => {
       ? ""
       : `http://image.tmdb.org/t/p/w500${props.data["poster_path"]}`;
   return (
-    props.data !== "404" && (
+    props.data["poster_path"] !== undefined && (
       <div className="movie-card">
         <img
           className="movie-card-img"

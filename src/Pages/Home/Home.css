@@ -1,6 +1,10 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-  background-color: #282828;
+.middle-text-cont {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 4vw;
+  font-family: CeraBold;
+  text-align: center;
+  color: white;
 }

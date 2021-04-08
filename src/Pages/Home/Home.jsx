@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import Footer from "../../Components/Navbar/Footer";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import "./Home.css";
-import { useLocation } from "react-router-dom";
 
 const Home = ({ setNav }) => {
   const [isMovie] = useState(
@@ -19,8 +18,6 @@ const Home = ({ setNav }) => {
     sessionStorage.getItem("SELECTOR") === "movie" ? MovieREST : TvREST
   );
 
-  const location = useLocation();
-
   useEffect(() => {
     setNav();
   }, [setNav]);
@@ -30,28 +27,7 @@ const Home = ({ setNav }) => {
   }, [ADAPTER]);
 
   useEffect(() => {
-    const searchBar = document.getElementById("search");
-
-    if (location.reset === true) {
-      setMovies([]);
-      searchBar.classList.remove("anim", "up-pos");
-      searchBar.classList.add("down-pos");
-    }
-  }, [location]);
-
-  useEffect(() => {
     sessionStorage.setItem("movies", JSON.stringify(movies));
-  }, [movies]);
-
-  useEffect(() => {
-    const searchBar = document.getElementById("search");
-    if (movies.length > 0) {
-      searchBar.classList.remove("down-pos");
-      searchBar.classList.add("up-pos");
-    } else {
-      searchBar.classList.remove("anim", "up-pos");
-      searchBar.classList.add("down-pos");
-    }
   }, [movies]);
 
   const getSearchResults = async () => {
@@ -70,7 +46,13 @@ const Home = ({ setNav }) => {
 
   return (
     <>
-      {/* <Navbar /> */}
+      {movies.length === 0 && (
+        <div className="middle-text-cont">
+          An application to help you find similar movies to your favourite
+          content
+        </div>
+      )}
+
       <SearchBar
         search={search}
         setSearch={setSearch}
@@ -78,7 +60,12 @@ const Home = ({ setNav }) => {
         length={movies.length}
         isMovie={isMovie}
       />
-      {movies.length !== 0 && <MovieCardHolder movies={movies} />}
+      {movies.length !== 0 && (
+        <>
+          <MovieCardHolder movies={movies} />
+          <Footer />
+        </>
+      )}
     </>
   );
 };

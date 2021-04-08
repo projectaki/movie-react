@@ -1,7 +1,7 @@
 .navbar {
   height: 7vh;
   font-family: monospace;
-  background-color: #484848;
+  background-color: rgb(55, 55, 55);
   top: 0;
   display: flex;
   align-items: center;
@@ -10,11 +10,12 @@
 
 .footer {
   height: 28vh;
-  background-color: #484848;
+  background-color: rgb(37, 38, 38);
   display: flex;
   align-items: center;
   justify-content: center;
   bottom: 0;
+  font-family: CeraMED;
 }
 
 .div-cont-mobile {
@@ -23,7 +24,7 @@
 
 .link-cont {
   position: absolute;
-  right: 2%;
+  left: 1%;
   height: 7vh;
   display: flex;
   align-items: center;
@@ -35,13 +36,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5vmin;
-  font-weight: 900;
+  font-size: 2vh;
+
+  font-family: CeraBold;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #ca0c3d;
+  color: rgb(150, 150, 150);
   font-weight: bold;
 }
 
@@ -61,7 +63,7 @@
 
   .div-cont-mobile {
     position: absolute;
-    right: 0;
+    left: 0;
     background-color: #484848;
     top: 7vh;
     width: 40vw;
@@ -69,7 +71,7 @@
   .mobile-icon {
     display: block !important;
     position: absolute;
-    right: 5%;
+    left: 5%;
   }
 
   .toggle {

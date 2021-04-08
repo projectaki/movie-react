@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
-
+import Footer from "../../Components/Navbar/Footer";
 import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
 
@@ -34,7 +34,12 @@ const Upcoming = () => {
 
   useEffect(() => getUpcoming(), [getUpcoming]);
 
-  return <>{movies.length !== 0 && <MovieCardHolder movies={movies} />}</>;
+  return (
+    <>
+      {movies.length !== 0 && <MovieCardHolder movies={movies} />}
+      <Footer />
+    </>
+  );
 };
 
 export default Upcoming;

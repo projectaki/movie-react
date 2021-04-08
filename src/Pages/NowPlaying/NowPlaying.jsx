@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import MovieREST from "../../MovieApi/MovieREST";
 import TvREST from "../../MovieApi/TvREST";
+import Footer from "../../Components/Navbar/Footer";
 
 const NowPlaying = () => {
   const [ADAPTER] = useState(
@@ -33,8 +34,8 @@ const NowPlaying = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
-      {movies.length !== 0 && <MovieCardHolder movies={movies} />};
+      {movies.length !== 0 && <MovieCardHolder movies={movies} />}
+      <Footer />
     </>
   );
 };

@@ -7,7 +7,6 @@ import Popular from "./Pages/PopularPage/Popular";
 import NowPlaying from "./Pages/NowPlaying/NowPlaying";
 import Upcoming from "./Pages/Upcoming/Upcoming";
 import TopButton from "./Components/TopButton/TopButton";
-import Location from "./Components/Location/Location";
 import Main from "./Pages/Main/Main";
 import { useState } from "react";
 import Providers from "./Components/Providers/Providers";

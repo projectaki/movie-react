@@ -8,8 +8,9 @@ import TvREST from "../../MovieApi/TvREST";
 import MovieCardHolder from "../../Components/MovieCardHolder/MovieCardHolder";
 import Footer from "../../Components/Navbar/Footer";
 import Providers from "../../Components/Providers/Providers";
+import Seasons from "../../Components/Seasons/Seasons";
 
-const MovieProfile = ({ isMovie }) => {
+const MovieProfile = () => {
   const [isMovieState] = useState(
     sessionStorage.getItem("SELECTOR") === "movie" ? true : false
   );
@@ -21,7 +22,9 @@ const MovieProfile = ({ isMovie }) => {
   );
   let castIndex = 0;
 
-  useEffect(() => {}, [movie]);
+  // useEffect(() => {
+  //   console.log(movie);
+  // }, [movie]);
 
   const getMovieDetails = useCallback(
     async (id) => {
@@ -30,14 +33,16 @@ const MovieProfile = ({ isMovie }) => {
         rec: null,
         similar: null,
         providers: null,
+        info: null,
       };
 
       const credits = await ADAPTER.getCredits(id);
       const rec = await ADAPTER.getReccomendation(id);
       const similar = await ADAPTER.getSimilar(id);
       const providers = await ADAPTER.getProviders(id);
+      const info = await ADAPTER.findByMovieId(id);
 
-      const res = await Promise.all([credits, rec, similar, providers]);
+      const res = await Promise.all([credits, rec, similar, providers, info]);
 
       details.credits = res[0].data;
       details.rec = res[1].data.results.filter((x) => x.poster_path !== null);
@@ -45,6 +50,7 @@ const MovieProfile = ({ isMovie }) => {
         (x) => x.poster_path !== null
       );
       details.providers = res[3].data;
+      details.info = res[4].data;
 
       return details;
     },
@@ -91,7 +97,6 @@ const MovieProfile = ({ isMovie }) => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className="profile-cont">
         <div>
           <MovieCard data={movie} />
@@ -131,6 +136,9 @@ const MovieProfile = ({ isMovie }) => {
                 );
               })}
           </div>
+          {!isMovieState && movie.info !== undefined && (
+            <Seasons seasons={movie.info.seasons} movieid={movie.id} />
+          )}
         </div>
         <div className="prov-cont">
           <Providers providers={movie.providers} />
@@ -140,9 +148,9 @@ const MovieProfile = ({ isMovie }) => {
           <i
             style={{
               paddingRight: "1vw",
-              fontSize: "9vmin",
+              fontSize: "7vmin",
               color: "#FFD700",
-              textShadow: "0 0 15px white",
+              textShadow: "0 0 5px black",
             }}
             className="fas fa-star fa-1x"
           ></i>
@@ -151,11 +159,11 @@ const MovieProfile = ({ isMovie }) => {
           </span>
         </p>
       </div>
-      <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
+      <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
         {`Recommended ${isMovieState ? "movies" : "tv shows"}`}
       </h2>
       {movie.rec !== undefined && <MovieCardHolder movies={movie.rec} />}
-      <h2 style={{ textAlign: "center", color: "#1B78E3", fontSize: "6vmin" }}>
+      <h2 style={{ textAlign: "center", color: "white", fontSize: "6vmin" }}>
         {`Similar ${
           isMovieState ? "movies" : "tv shows"
         } based on keywords and genres`}
@@ -164,7 +172,6 @@ const MovieProfile = ({ isMovie }) => {
         <MovieCardHolder movies={movie.similar} />
       )}
       <Footer />
-      {/* <Similar key={movie.id} movieid={movie.id} /> */}
     </>
   );
 };
