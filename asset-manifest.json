@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/movie-react/static/css/main.05270c62.chunk.css",
-    "main.js": "/movie-react/static/js/main.3ba33a36.chunk.js",
-    "main.js.map": "/movie-react/static/js/main.3ba33a36.chunk.js.map",
+    "main.css": "/movie-react/static/css/main.a9cbb80e.chunk.css",
+    "main.js": "/movie-react/static/js/main.9dd3a5a1.chunk.js",
+    "main.js.map": "/movie-react/static/js/main.9dd3a5a1.chunk.js.map",
     "runtime-main.js": "/movie-react/static/js/runtime-main.488d0408.js",
     "runtime-main.js.map": "/movie-react/static/js/runtime-main.488d0408.js.map",
-    "static/js/2.1d4d901d.chunk.js": "/movie-react/static/js/2.1d4d901d.chunk.js",
-    "static/js/2.1d4d901d.chunk.js.map": "/movie-react/static/js/2.1d4d901d.chunk.js.map",
+    "static/js/2.1db6c87d.chunk.js": "/movie-react/static/js/2.1db6c87d.chunk.js",
+    "static/js/2.1db6c87d.chunk.js.map": "/movie-react/static/js/2.1db6c87d.chunk.js.map",
     "index.html": "/movie-react/index.html",
-    "static/css/main.05270c62.chunk.css.map": "/movie-react/static/css/main.05270c62.chunk.css.map",
-    "static/js/2.1d4d901d.chunk.js.LICENSE.txt": "/movie-react/static/js/2.1d4d901d.chunk.js.LICENSE.txt",
+    "static/css/main.a9cbb80e.chunk.css.map": "/movie-react/static/css/main.a9cbb80e.chunk.css.map",
+    "static/js/2.1db6c87d.chunk.js.LICENSE.txt": "/movie-react/static/js/2.1db6c87d.chunk.js.LICENSE.txt",
     "static/media/index.css": "/movie-react/static/media/LeagueSpartan-Bold.caadcad8.otf"
   },
   "entrypoints": [
     "static/js/runtime-main.488d0408.js",
-    "static/js/2.1d4d901d.chunk.js",
-    "static/css/main.05270c62.chunk.css",
-    "static/js/main.3ba33a36.chunk.js"
+    "static/js/2.1db6c87d.chunk.js",
+    "static/css/main.a9cbb80e.chunk.css",
+    "static/js/main.9dd3a5a1.chunk.js"
   ]
 }
