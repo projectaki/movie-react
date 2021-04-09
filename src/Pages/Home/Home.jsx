@@ -36,8 +36,6 @@ const Home = ({ setNav }) => {
     for (let movie of res.data.results) {
       movie["poster_path"] !== null &&
         movie["original_language"] === "en" &&
-        movie["popularity"] > 15 &&
-        movie["vote_count"] > 30 &&
         movie["backdrop_path"] !== null &&
         arr.push(movie);
     }

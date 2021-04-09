@@ -1,7 +1,10 @@
-.search-bar {
+.search-cont {
   top: 1vh;
   right: 2%;
   position: absolute;
+  width: 60vmin;
+}
+.search-bar {
   width: 60vmin;
   height: 5vh;
   border-radius: 3px;
@@ -22,6 +25,25 @@
   color: transparent;
 }
 
+.suggestion-cont {
+  width: 60vmin;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.suggestion-record {
+  width: 60vmin;
+  padding: 1vh 2vw;
+  text-align: start;
+  border: 0;
+}
+
+.suggestion-record:hover {
+  cursor: pointer;
+  background-color: rgb(160, 160, 160);
+  width: 60vmin;
+}
+
 /*
     Remove outline on click
 */
@@ -38,7 +60,7 @@ input[type="search"] {
 }
 
 @media screen and (max-width: 1150px) {
-  .search-bar {
+  .search-cont {
     top: 8vh;
     left: 50%;
     transform: translateX(-50%);
