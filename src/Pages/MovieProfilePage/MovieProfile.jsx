@@ -94,10 +94,10 @@ const MovieProfile = () => {
   return (
     <>
       <div>
-        {movie.backdrop_path !== undefined && (
+        {movie.backdrop_path !== undefined && movie.backdrop_path !== null && (
           <img
             className="backdrop"
-            src={`http://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt={movie.original_title || movie.original_name}
           ></img>
         )}
