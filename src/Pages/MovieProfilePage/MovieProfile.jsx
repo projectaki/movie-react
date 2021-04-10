@@ -22,10 +22,6 @@ const MovieProfile = () => {
   );
   let castIndex = 0;
 
-  useEffect(() => {
-    console.log(movie);
-  }, [movie]);
-
   const getMovieDetails = useCallback(
     async (id) => {
       let details = {
@@ -98,10 +94,13 @@ const MovieProfile = () => {
   return (
     <>
       <div>
-        <img
-          className="backdrop"
-          src={`http://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        ></img>
+        {movie.backdrop_path !== undefined && (
+          <img
+            className="backdrop"
+            src={`http://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            alt={movie.original_title || movie.original_name}
+          ></img>
+        )}
       </div>
 
       <div className="profile-cont">
@@ -176,7 +175,7 @@ const MovieProfile = () => {
             color: "white",
             fontSize: "6vmin",
             fontFamily: "CeraBold",
-
+            width: "100%",
             padding: "1vh 0",
           }}
         >
@@ -188,7 +187,7 @@ const MovieProfile = () => {
             textAlign: "center",
             color: "white",
             fontSize: "6vmin",
-
+            width: "100%",
             padding: "1vh 0",
           }}
         >

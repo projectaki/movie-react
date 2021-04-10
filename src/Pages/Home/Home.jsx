@@ -44,10 +44,15 @@ const Home = ({ setNav }) => {
 
   return (
     <>
-      {movies.length === 0 && (
+      {typeof movies === "string" && (
         <div className="middle-text-cont">
           An application to help you find similar movies to your favourite
           content
+        </div>
+      )}
+      {typeof movies === "object" && movies.length === 0 && (
+        <div className="middle-text-cont">
+          No entries were found for your search...
         </div>
       )}
 

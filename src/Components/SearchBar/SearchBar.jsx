@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
-import data from "../../topmovies.json";
+import topmovies from "../../topmovies.json";
+import topseries from "../../topseries.json";
 import { PrefixTree } from "../../PrefixTree/PrefixTree";
 
 const SearchBar = (props) => {
@@ -8,6 +9,9 @@ const SearchBar = (props) => {
   const [query, setQuery] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [pT, setPT] = useState(new PrefixTree());
+  const [data] = useState(
+    sessionStorage.getItem("SELECTOR") === "movie" ? topmovies : topseries
+  );
 
   useEffect(() => {
     const temp = new PrefixTree();
@@ -16,15 +20,14 @@ const SearchBar = (props) => {
     }
     setPT(temp);
     setLoaded(true);
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (loaded) {
       const res = pT.listPossibilities(query, 10);
-
       setResults(res);
     }
-  }, [query]);
+  }, [query, loaded, pT]);
 
   return (
     <>
@@ -54,23 +57,25 @@ const SearchBar = (props) => {
             }}
           />
           <input type="submit" style={{ display: "none" }} />
-          <div className="suggestion-cont">
-            {results.map((result, idx) => {
-              return (
-                <button
-                  type="submit"
-                  className="suggestion-record"
-                  key={idx}
-                  onClick={() => {
-                    setQuery(result);
-                    props.setSearch(result);
-                  }}
-                >
-                  {result}
-                </button>
-              );
-            })}
-          </div>
+          {
+            <div className="suggestion-cont">
+              {results.map((result, idx) => {
+                return (
+                  <button
+                    type="submit"
+                    className="suggestion-record"
+                    key={idx}
+                    onClick={() => {
+                      setQuery(result);
+                      props.setSearch(result);
+                    }}
+                  >
+                    {result}
+                  </button>
+                );
+              })}
+            </div>
+          }
         </form>
       </div>
     </>
